@@ -19,7 +19,7 @@ customers who manage more than one tenant in Qlik Cloud.
 
 ![Sheets in the OEM Dashboard](/images/readme_sheets.png)
 
-This application includes data from the App Analyzer, Entitlement Analyzer, and
+This application pulls data from the App Analyzer, Entitlement Analyzer, and
 the Reload Analyzer, all of which are other monitoring applications for Qlik Cloud.
 By bringing this data together, it simplifies and streamlines management of an
 OEM environment.
