@@ -30,9 +30,13 @@ review [this video](https://www.qlik.com/blog/extending-the-power-of-qlik-sense-
 The OEM Dashboard is provided with an optional data source, the Console Settings
 Collector application, which collects configuration information from each tenant.
 
-## Installing/ updating
+## Installing / Updating
 
 A PDF containing installation instructions is attached to each [release](/../../releases).
+
+## Subscription Compatibility
+
+Some monitoring apps are designed for specific Qlik Cloud subscription types. Refer to the compatibility matrix within the [Qlik Cloud Monitoring Apps](https://github.com/qlik-oss/qlik-cloud-monitoring-apps?tab=readme-ov-file#applications) repository.
 
 ## Support policy
 
