@@ -1,0 +1,10 @@
+{
+  "qTitle": "Console Settings Collector v2.1.0",
+  "qThumbnail": {
+    "qUrl": "/api/v1/apps/<appId>/media/files/console_settings_collector_icon.png"
+  },
+  "description": "The Console Settings Collector is a QVD generator that collects settings-related metadata cross Qlik Sense tenants. It is predominantly used in support of multi-tenant monitoring applications.\n\nCreated by Daniel Pilla, Master Principal Analytics Platform Architect, Qlik\n\n{v2.1.0}",
+  "qUsage": "ANALYTICS",
+  "published": false,
+  "hassectionaccess": false
+}

@@ -1,0 +1,76 @@
+[
+  {
+    "qInfo": {
+      "qId": "8673d289-3cc5-4878-87ff-772ed26ca883",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantHostname"
+      ],
+      "qFieldLabels": [
+        "TenantHostname"
+      ],
+      "title": "TenantHostname",
+      "coloring": {
+        "colorMapRef": "sSBUG",
+        "changeHash": "0.5706121814479121"
+      }
+    },
+    "qMetaDef": {
+      "title": "TenantHostname",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "sSBUG",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantID"
+      ],
+      "qFieldLabels": [
+        "TenantID"
+      ],
+      "title": "TenantID",
+      "coloring": {
+        "changeHash": "0.14164598803637118"
+      }
+    },
+    "qMetaDef": {
+      "title": "TenantID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "1848d764-33f9-45a4-b235-f67022d211b7",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantName"
+      ],
+      "qFieldLabels": [
+        "TenantName"
+      ],
+      "title": "TenantName",
+      "coloring": {
+        "colorMapRef": "sSBUG",
+        "changeHash": "0.9131050210052625"
+      }
+    },
+    "qMetaDef": {
+      "title": "TenantName",
+      "description": "",
+      "tags": []
+    }
+  }
+]
