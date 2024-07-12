@@ -1,0 +1,1158 @@
+[
+  {
+    "qInfo": {
+      "qId": "a6c7bca4-b7c3-47ba-8572-84e708c0feb9",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vUsingEndpoints",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Count({1\u003cDataConnectionName={'[Unknown Endpoints Connection]'}\u003e}DISTINCT AppID)\u003e=1",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "f8b92bc7-10cb-4eb6-a7c8-1bc863639b85",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxAssignedProUsers",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Max(Aggr([# Professional Assigned by Tenant (Current)],TenantID))",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "2edecfa5-922b-4716-83b5-a6e654fb3724",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAnalyzerSVGPadPx",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxAssignedAnalyzerUsers))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "14f09d0b-a1aa-421c-bbaa-2b7751c05e12",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vThisAppAge",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Replace(Replace(Replace(Interval(Now()-ReloadTime(),'D hh@mm#'),' ',' days '),'@',' hrs '),'#',' mins')",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "97df8a2d-73f1-46b1-9c86-dc6a9c672b92",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAppRecordCountThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "100000000"
+  },
+  {
+    "qInfo": {
+      "qId": "32303804-4fab-496c-ac95-5b83a54bcce4",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxAssignedAnalyzerUsersGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=[# Analyzer Assigned (CM)]",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "ff34f925-10d4-4319-b4c5-4a4077c21b7b",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAnalyzerSVGPadPxGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxAssignedAnalyzerUsersGlobal))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "0ca0f11f-2c87-42a4-95cc-d818a6047769",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vProSVGPadPx",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxAssignedProUsers))*6 ",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "bfa22fc5-2cd1-48f8-8cea-85115acc4846",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxAssignedAnalyzerUsers",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Max(Aggr([# Analyzer Assigned by Tenant (Current)],TenantID))",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "be111875-72f1-415e-b936-b54f2a46b35c",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxAssignedProUsersGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=[# Professional Assigned (CM)]",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "0a522390-ed4e-48d4-b767-b3a5e543d618",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vProSVGPadPxGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxAssignedProUsersGlobal))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "f333aba4-3619-495b-ae86-815b9c27aacf",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAppsUsingExpression",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=If(\r\n\t$(vUsingEndpoints),\n    'Count({\u003cDataConnectionType-={' \u0026 chr(39) \u0026 'qix-datafiles.exe' \u0026 chr(39) \u0026 '}\u003e}DISTINCT AppID)',\n    'Count({\u003cDataConnectionType-={' \u0026 chr(39) \u0026 'qix-datafiles.exe' \u0026 chr(39) \u0026 '},DataConnectionName-={' \u0026 chr(39) \u0026 '[Unknown Endpoints Connection]' \u0026 chr(39) \u0026 '}\u003e}DISTINCT AppID)'\n)",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "e6941887-d87d-47db-9220-a28b9338ebf4",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAppReloadPeakRAMToQuotaPercentThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".8"
+  },
+  {
+    "qInfo": {
+      "qId": "4fa0c524-2cc7-4f8a-af86-8195db5d3547",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFieldValueCountThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "10000000"
+  },
+  {
+    "qInfo": {
+      "qId": "0aba4f55-1fb6-40f1-a5a4-def10011ce5c",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxUsedCapacity",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Max(Aggr([# Capacity Used (CM Summed)],TenantID))",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "40d49221-03f3-47bc-8f69-d9d2790df75a",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAppRAMToQuotaPercentThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".8"
+  },
+  {
+    "qInfo": {
+      "qId": "7d6316d7-88e7-4cbf-90bc-430ba84b35a7",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vReloadCPUTimeThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1800000"
+  },
+  {
+    "qInfo": {
+      "qId": "49e68462-1a9c-4176-993e-388c6f8ddab4",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxUsedCapacityGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=[# Capacity Used (CM Summed)]",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "e726c53e-34e0-49f4-997b-50a2effc40a9",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxOverageUsedByTenant",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Max(Aggr([# Overage Used (CM Summed by Tenant)],TenantID))",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "cc738f46-17c1-44b1-a41b-aca1acd4dc00",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFieldCardinalityThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1000000"
+  },
+  {
+    "qInfo": {
+      "qId": "a347d091-2ebc-4ae5-85cb-6c12bdbae991",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vCapacitySVGPadPx",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxUsedCapacity))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "5ec9f4b9-92ca-4f82-8481-dbbbbcef20d9",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vSourceDataStaleAsOfHoursAgo",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "24"
+  },
+  {
+    "qInfo": {
+      "qId": "cf1d4aaf-62c5-4709-9a97-74b8c1d2cbed",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vConsoleSettingsCollectorMessage",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "'The data from the ''Console Settings Collector'' is not currently loaded into this app, which provides the feature/capability settings for each tenant.'\u0026 Chr(10) \u0026 Chr(10) \u0026 'To load this data, you can toggle on the ''vConsoleSettingsCollector'' variable within the ''**Optional Configuration**'' tab of the load script.'",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "9d00151f-6847-4296-b3a9-3a3d0939fbda",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFeaturesExpression",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "If($(vFeaturesValueList)='Alerts',Count({\u003cAlertsEnabled={'True'}\u003e} TenantID),\r\nIf($(vFeaturesValueList)='API Keys',Count({\u003cAPIKeysEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Chart Sharing via Email',Count({\u003cSharingEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Dynamic Views',Count({\u003cDynamicViewEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Groups',Count({\u003cGroupCreationEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Lineage',Count({\u003cLineageEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='ML Endpoints',Count({\u003cMLEndpointsEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Notes',Count({\u003cNotesEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='ODAG',Count({\u003cODAGEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Offline',Count({\u003cOfflineEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Report Subscription',Count({\u003cSharingReportSubscriptionEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Usage Metrics',Count({\u003cUsageMetricsEnabled={'True'}\u003e} TenantID)\n))))))))))))",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "a2fec545-7f37-4b2f-a538-2f44eb19be64",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vCapacitySVGPadPxGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxUsedCapacityGlobal))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "1b54b352-238b-4bbd-853c-f7237199a745",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vOverageSVGPadPxByTenant",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxOverageUsedByTenant))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "239d652b-87df-45d3-be0f-5ab1b059f0d0",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vTableRecordCountThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "50000000"
+  },
+  {
+    "qInfo": {
+      "qId": "b960823e-865f-45a0-b252-13a040cbad3e",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vNoOfFields",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "150"
+  },
+  {
+    "qInfo": {
+      "qId": "4f96af9a-c42a-4ec5-8a89-8886c298b200",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxOverageUsed",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=[# Overage Used (CM Summed Global)]",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "599ed246-25fd-4605-a581-59fbf7734681",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vOverageSVGPadPx",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxOverageUsed))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "6a0e32c4-c6d9-4d4f-9028-dd1db0d6f6e1",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vSourceDataStaleColor",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB(250, 192, 57, 43)"
+  },
+  {
+    "qInfo": {
+      "qId": "9b240d28-a119-49d2-9d83-59f7697f41f2",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFeaturesValueList",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ValueList('Alerts','API Keys','Chart Sharing via Email','Dynamic Views','Groups','ML Endpoints','Notes','ODAG','Offline','Report Subscription','Usage Metrics')",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "523f68c0-8462-4e51-8fcd-11ffa72b22f8",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vSeparateLicenses",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "0"
+  },
+  {
+    "qInfo": {
+      "qId": "efbd944f-8f65-4e4c-8d3a-86b94ebf63da",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAnalyzerLowThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".6"
+  },
+  {
+    "qInfo": {
+      "qId": "225747fd-5bd6-4ecb-b097-88e8a3f73770",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vCapHighThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".8"
+  },
+  {
+    "qInfo": {
+      "qId": "776963e9-e66b-4964-8877-b74507b2e1d3",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_threshold_red",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(165,67,67)"
+  },
+  {
+    "qInfo": {
+      "qId": "fe2b7b54-db4b-4ceb-b959-d5c425a9eb20",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_green_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,17,119,51)"
+  },
+  {
+    "qInfo": {
+      "qId": "2c0cfb06-773e-435d-a619-5fbc71ac725b",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_red_0_green_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "IF($1=0,c_red,ARGB($1,101,177,99))"
+  },
+  {
+    "qInfo": {
+      "qId": "489e95f8-c458-4e92-a645-a5968d04be86",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vReloadFailureMonthlyThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "10"
+  },
+  {
+    "qInfo": {
+      "qId": "328599c8-aba1-403d-aa25-ff9a8a5057c1",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vReloadDurationThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".125"
+  },
+  {
+    "qInfo": {
+      "qId": "8994eb22-d916-45c2-a56c-bbd3b2729d49",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vDescriptionAttributePatternMatchEnd",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "}"
+  },
+  {
+    "qInfo": {
+      "qId": "102af466-5e11-4ddc-85bb-3460f7e6f818",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vProLowThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".6"
+  },
+  {
+    "qInfo": {
+      "qId": "1213196e-f842-4b22-abe3-aee78e200e80",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vProHighThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".8"
+  },
+  {
+    "qInfo": {
+      "qId": "976b21c8-d902-486d-b906-6ca88abe2e17",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vBelowHighThreshColor",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "FFC72A"
+  },
+  {
+    "qInfo": {
+      "qId": "b9f7b0c2-9660-4c10-a0bd-9fb67d9b997d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAboveHighThreshColor",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "E7004C"
+  },
+  {
+    "qInfo": {
+      "qId": "e3373f9f-c0a1-441e-812c-7c1b05eef16d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vNow",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "10/24/2023 4:01:40 PM"
+  },
+  {
+    "qInfo": {
+      "qId": "9b983dc1-159a-4817-8872-279f863a151f",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vPersonalUserField",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ReloadUserName"
+  },
+  {
+    "qInfo": {
+      "qId": "f84d7426-6873-4d4c-afea-10c5c5172dbc",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_orange",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(233,141,54)"
+  },
+  {
+    "qInfo": {
+      "qId": "3ec4a9a5-a8b7-4739-8176-9bfcca54db70",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_orange_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,233,141,54)"
+  },
+  {
+    "qInfo": {
+      "qId": "6cc386ea-0e3b-4fb2-96b7-1a75fe5972c7",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_red_issue_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,231,76,60)"
+  },
+  {
+    "qInfo": {
+      "qId": "2e32d6e6-7b74-45cb-804a-09c756c57bf7",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vReloadDurationThreshPercent",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".6"
+  },
+  {
+    "qInfo": {
+      "qId": "751339ba-f1b9-4851-afa4-00789d6dbd82",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vSessionDurationThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".00347"
+  },
+  {
+    "qInfo": {
+      "qId": "a8033fdf-c1bd-4cd1-82fb-38bd1705ba96",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAnalyzerHighThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".8"
+  },
+  {
+    "qInfo": {
+      "qId": "3ae52197-1c27-49e8-a594-eafad9f4bb88",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vBelowLowThreshColor",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "006580"
+  },
+  {
+    "qInfo": {
+      "qId": "0d0375fc-7305-437d-b349-5884a8540eb0",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vOverageLowThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".6"
+  },
+  {
+    "qInfo": {
+      "qId": "09317a65-37b4-4b08-b88a-c4af96acb66f",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAppRAMPeakReloadSizeQuota",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "16106127360"
+  },
+  {
+    "qInfo": {
+      "qId": "8af4243f-1392-4597-bab2-93d920ced4e2",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_yellow",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(221,204,119)"
+  },
+  {
+    "qInfo": {
+      "qId": "c71dbbb3-b325-4a7e-b501-0259ed6edd0e",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_green",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(17,119,51)"
+  },
+  {
+    "qInfo": {
+      "qId": "c53eec01-ca1e-415a-b27e-960000a61871",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_lightred",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(240,209,214)"
+  },
+  {
+    "qInfo": {
+      "qId": "6094a1cf-4551-4f3a-a499-31ff6df65b24",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_orange_breeze_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,233,141,54)"
+  },
+  {
+    "qInfo": {
+      "qId": "c984864d-52e7-4c31-85a4-991c71052125",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_green_breeze_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,101,177,99)"
+  },
+  {
+    "qInfo": {
+      "qId": "6882fc41-3444-4242-a7b0-684307802f31",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_green_emerald_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,210,220,228)"
+  },
+  {
+    "qInfo": {
+      "qId": "22e8a7a6-529a-4533-8939-de0e49bc7625",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vDataStaleColor",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB(255, 231, 76, 60)"
+  },
+  {
+    "qInfo": {
+      "qId": "4e06590a-cfce-435c-800b-1c0bfefcf40e",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vDescriptionAttributePatternMatchStart",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "{"
+  },
+  {
+    "qInfo": {
+      "qId": "17332b48-c644-4d14-90d4-5a9243142355",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_lightblue",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(188,181,201)"
+  },
+  {
+    "qInfo": {
+      "qId": "94a790ad-c134-4235-8e2a-85171b310e6f",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_gray_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,150,150,150)"
+  },
+  {
+    "qInfo": {
+      "qId": "00249aae-cbc9-4edf-ae36-cf72666d615f",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_red_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,204,102,119)"
+  },
+  {
+    "qInfo": {
+      "qId": "58af3d3d-d57c-4890-ab53-28c040cb6411",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vDataStaleAsOfHoursAgo",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "6"
+  },
+  {
+    "qInfo": {
+      "qId": "cd96d2ce-4f93-4610-9675-dd4aba9bd891",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vCapLowThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".6"
+  },
+  {
+    "qInfo": {
+      "qId": "f79f8957-31be-4e72-8e01-01d6f1e27330",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_blue",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(68,119,170)"
+  },
+  {
+    "qInfo": {
+      "qId": "390fddcf-efa9-4d6e-8da9-7348bcd35da3",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_yellow_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,221,204,119)"
+  },
+  {
+    "qInfo": {
+      "qId": "5b4d22f6-bd0f-42e3-abdd-aa9944713e48",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_blue_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,0,101,128)"
+  },
+  {
+    "qInfo": {
+      "qId": "5f47287d-b957-472c-8c3a-787234a6e80c",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_red_breeze_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,155,58,59)"
+  },
+  {
+    "qInfo": {
+      "qId": "772693e1-f0e7-4389-8193-dd8b0d6c232a",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vReloadAnalyzerUsersCounter",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "5757e251-c1f9-4970-97b0-268484750f15",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vOverageHighThresh",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".8"
+  },
+  {
+    "qInfo": {
+      "qId": "27dae14b-66d2-42f0-a8b9-3c9d3bdcec51",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_light_gray",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(240,240,240)"
+  },
+  {
+    "qInfo": {
+      "qId": "1d9eac02-6a6d-48e8-aa8e-0ed51662d3fb",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_red",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(204,102,119)"
+  },
+  {
+    "qInfo": {
+      "qId": "64a94783-4184-484f-b7c0-ebe670d3f59d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_gray",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(150,150,150)"
+  },
+  {
+    "qInfo": {
+      "qId": "7800bbd4-0e4f-4d7a-997c-0d95b8043539",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_green_emerald",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "RGB(0,105,55)"
+  },
+  {
+    "qInfo": {
+      "qId": "929c1fed-3f24-496c-8b3c-d2490fd2e229",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "c_teal_breeze_alpha",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "ARGB($1,19,118,122)"
+  },
+  {
+    "qInfo": {
+      "qId": "e074bea7-da47-4e24-8e92-a39d7dbf6342",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vSessionDurationThreshPercent",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": ".6"
+  }
+]

@@ -1,0 +1,338 @@
+[
+  {
+    "qInfo": {
+      "qId": "9788ede7-b9f0-4035-8b39-bc2c9f8133ac",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "NullAsValue",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "\u003cNull\u003e"
+  },
+  {
+    "qInfo": {
+      "qId": "e8f0a986-614c-4dfc-a565-38a5eed844bc",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFileFound",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "5379cc72-2b33-40e3-97a5-6402ab75bcf1",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vTenantFileFOund",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "49a36469-1ae8-4d43-aa38-3499b1c045df",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vLatestVersion",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "v2.0.0"
+  },
+  {
+    "qInfo": {
+      "qId": "df384b66-806d-49f1-914f-ee983a2d9936",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vStartTime",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "10/24/2023 4:00:51 PM"
+  },
+  {
+    "qInfo": {
+      "qId": "4e036de2-7c97-46cb-9d21-163af9fb8b95",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "sub_start",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45223.667638889"
+  },
+  {
+    "qInfo": {
+      "qId": "9b5bb712-0f84-4a4b-bd85-417a785dd69d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "sub_routine",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "get_smtp"
+  },
+  {
+    "qInfo": {
+      "qId": "91a526d8-b19a-44b9-af34-bdf11256d25e",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vIsLatestVersion",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "0"
+  },
+  {
+    "qInfo": {
+      "qId": "9d04e0c0-d636-4ed7-b50c-62b5649fbb8b",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "0",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "0"
+  },
+  {
+    "qInfo": {
+      "qId": "08289a4d-927e-4536-976a-3651d94e6108",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "reload_end",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "10/24/2023 4:01:25 PM"
+  },
+  {
+    "qInfo": {
+      "qId": "1880c1eb-d851-43f1-aa19-58572d3145e9",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vu_is_parent_app",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "18293418-825b-476f-a963-60fabb6f610c",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "1",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "effa8a07-b5d2-4299-a09a-b00d5c6abe83",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "app_name",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "Console Settings Collector"
+  },
+  {
+    "qInfo": {
+      "qId": "7d0474aa-d391-457e-a4c3-4dd46f0cc5f3",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "app_version",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "2.0.1"
+  },
+  {
+    "qInfo": {
+      "qId": "8933b112-c8ab-423b-ac11-67a2d6aa7683",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "reload_duration",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "2"
+  },
+  {
+    "qInfo": {
+      "qId": "0417d441-1106-473f-9032-6a92af368d91",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "i",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "2"
+  },
+  {
+    "qInfo": {
+      "qId": "2a5cf603-f4c2-4e4e-b963-e5a3c8552b43",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vTableName",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "Tenants"
+  },
+  {
+    "qInfo": {
+      "qId": "63cfcbed-a584-4404-aa26-c6caf35b27c7",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAnyFileFound",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "6b23fa4e-49e1-4bc2-8871-dca2b7e24537",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vTenants",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "2229db18-399d-4a02-b1a8-7ee459821d3c",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "sub_duration",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "33d2f0dd-4c5d-484b-90d5-c0aa7b144a9d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "reload_start",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "10/24/2023 4:01:24 PM"
+  },
+  {
+    "qInfo": {
+      "qId": "966f01ef-3da8-4ca2-b18f-5479fea6008d",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vTenantFileFound",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1"
+  },
+  {
+    "qInfo": {
+      "qId": "0b450fdf-dabe-4b54-8a12-b1e8b6df08ec",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "sub_finish",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "45223.667650463"
+  },
+  {
+    "qInfo": {
+      "qId": "223f3cb2-2f56-4ed6-b7a6-558acb2eaabc",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "engine_ver",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "12.1875.0"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "qInfo": {
+    "qId": "7fdb1bc0-30f0-4822-9400-1321ef7e0cfe",
+    "qType": "appprops"
+  },
+  "qMetaDef": {},
+  "sheetTitleBgColor": "",
+  "sheetTitleGradientColor": "",
+  "sheetTitleColor": "",
+  "sheetLogoThumbnail": {
+    "qStaticContentUrlDef": {}
+  },
+  "sheetLogoPosition": "",
+  "rtl": false,
+  "theme": "horizon",
+  "disableCellNavMenu": false
+}

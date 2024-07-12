@@ -1,0 +1,10 @@
+{
+  "qTitle": "OEM Dashboard v2.1.0",
+  "qThumbnail": {
+    "qUrl": "/api/v1/apps/<appId>/media/files/app_thumb_Oem.png"
+  },
+  "description": "Analyze metadata across any number of child tenants with the OEM Dashboard.\n\nCreated by Daniel Pilla, Master Principal Analytics Platform Architect, Qlik\n\n{v2.1.0}",
+  "qUsage": "ANALYTICS",
+  "published": false,
+  "hassectionaccess": false
+}
