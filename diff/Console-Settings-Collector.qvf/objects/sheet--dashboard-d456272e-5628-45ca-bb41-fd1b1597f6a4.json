@@ -1399,71 +1399,6 @@
               "qDef": {
                 "qGrouping": "N",
                 "qFieldDefs": [
-                  "AutomationsEnabled"
-                ],
-                "qFieldLabels": [
-                  ""
-                ],
-                "qSortCriterias": [
-                  {
-                    "qSortByNumeric": 1,
-                    "qSortByAscii": 1,
-                    "qSortByLoadOrder": 1,
-                    "qExpression": {}
-                  }
-                ],
-                "qNumberPresentations": [],
-                "qActiveField": 0,
-                "autoSort": true,
-                "cId": "WrAjKP",
-                "othersLabel": "Others",
-                "textAlign": {
-                  "auto": true,
-                  "align": "left"
-                },
-                "representation": {
-                  "type": "text",
-                  "urlPosition": "dimension",
-                  "urlLabel": "",
-                  "linkUrl": "",
-                  "imageSetting": "label",
-                  "imageLabel": "",
-                  "imageUrl": "",
-                  "imageSize": "fitHeight",
-                  "imagePosition": "topCenter"
-                }
-              },
-              "qOtherTotalSpec": {
-                "qOtherMode": "OTHER_OFF",
-                "qOtherCounted": {
-                  "qv": "10"
-                },
-                "qOtherLimit": {
-                  "qv": "0"
-                },
-                "qOtherLimitMode": "OTHER_GE_LIMIT",
-                "qForceBadValueKeeping": true,
-                "qApplyEvenWhenPossiblyWrongResult": true,
-                "qOtherSortMode": "OTHER_SORT_DESCENDING",
-                "qTotalMode": "TOTAL_OFF",
-                "qReferencedExpression": {}
-              },
-              "qOtherLabel": {
-                "qv": "Others"
-              },
-              "qTotalLabel": {},
-              "qCalcCond": {},
-              "qAttributeExpressions": [],
-              "qAttributeDimensions": [],
-              "qCalcCondition": {
-                "qCond": {},
-                "qMsg": {}
-              }
-            },
-            {
-              "qDef": {
-                "qGrouping": "N",
-                "qFieldDefs": [
                   "DynamicViewEnabled"
                 ],
                 "qFieldLabels": [
@@ -3705,16 +3640,15 @@
             48,
             49,
             50,
-            51,
             2,
             3,
             5,
-            53,
+            52,
             0,
             6,
             1,
             4,
-            52
+            51
           ],
           "qSuppressMissing": true,
           "qInitialDataFetch": [],
@@ -3732,7 +3666,7 @@
           "qColumnOrder": [
             0,
             1,
-            53,
+            52,
             2,
             3,
             4,
@@ -3782,15 +3716,14 @@
             48,
             49,
             50,
-            51,
-            52
+            51
           ],
           "qExpansionState": [],
           "qDynamicScript": [],
           "columnOrder": [
             0,
             1,
-            53,
+            52,
             2,
             3,
             4,
@@ -3840,11 +3773,9 @@
             48,
             49,
             50,
-            51,
-            52
+            51
           ],
           "columnWidths": [
-            -1,
             -1,
             -1,
             -1,
