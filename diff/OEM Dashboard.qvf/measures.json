@@ -1,0 +1,3552 @@
+[
+  {
+    "qInfo": {
+      "qId": "a0546a7b-03b6-4944-8365-ac6da10601de",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Overage Used (CM Summed by Tenant)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewOverage),0)\u003e0,\n\t[# Overage Used (CM Summed by Tenant)]/\n\tMax({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewOverage),0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The % of overage used from the license against the license total for the current month.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Overage Used (CM Summed by Tenant)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "1f193999-f480-43f2-a23b-1f5e089ce7c1",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Overage Used (CM Summed Global)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewOverage),0)\u003e0,\n\t[# Overage Used (CM Summed Global)]/\n\tMax({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewOverage),0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The % of overage used from the license against the license total for the current month.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Overage Used (CM Summed Global)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "611b3607-3d74-4641-9463-a3dd76857851",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Overage Used (CM Summed Global)",
+      "qDef": "If(\r\n\tSum({\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'analyzer_time'}\u003e}SessionMinutesUsed)\n\t\u003eAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0),\n\t\n    Sum({\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'analyzer_time'}\u003e}SessionMinutesUsed)\n\t-\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0)\n    ,0\n)\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The # of overage minutes used for the current month summed up from the users.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Overage Used (CM Summed Global)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "2c8699c6-1577-46d8-8a8e-acdb6fd4c07c",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Overage Used (CM Summed by Tenant)",
+      "qDef": "Sum(\r\n  Aggr(\n    if(Sum({\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'analyzer_time'}\u003e}SessionMinutesUsed)\n        \u003eAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0),\n        Sum({\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'analyzer_time'}\u003e}SessionMinutesUsed)\n        -\n        Alt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0),0),\n        TenantID\n  )\n)\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The # of overage minutes used for the current month summed up from the users by tenant (single site licenses only).'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Overage Used (CM Summed by Tenant)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "d14dd825-47f8-454e-a797-226dec8a4357",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Sessions (Last 90)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 60 Days'}\u003e} DISTINCT SessionID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Sessions (Last 90)",
+      "description": "The number of sessions over the last 60 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "e4ae2e88-3fbb-4656-8b44-3103b17b856e",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Capacity Used (CM Summed)",
+      "qDef": "Sum({\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'analyzer_time'}\u003e}SessionMinutesUsed)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The # of capacity minutes used for the current month summed up from the users.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Capacity Used (CM Summed)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "9ea372cd-a30a-412a-8c2a-81e48b61c31b",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Capacity Used",
+      "qDef": "Sum({\u003cSessionEntitlementConsumed={'analyzer_time'}\u003e}SessionMinutesUsed)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The # of capacity used, calculated by summing up user minutes.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Capacity Used",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "e6c6c70c-9e22-43a7-929d-0bbd96abb5e9",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Professionals Consuming (CM)",
+      "qDef": "count(DISTINCT {\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'professional'}\u003e}SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false,
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of professional users using their license (consuming a session) for the current month.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "# Professionals Consuming (CM)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "1e90e20e-a8df-4dd9-9272-b9f143d9941f",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Cap Analyzers Consuming (CM)",
+      "qDef": "count(DISTINCT {\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'analyzer_time'}\u003e}SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false,
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of capacity analyzer users consuming minutes for the current month.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "# Cap Analyzers Consuming (CM)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "5bc0b4d8-8373-4334-ba1a-690dfea5dbee",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Cap Analyzers Consuming",
+      "qDef": "Count(DISTINCT {\u003cSessionEntitlementConsumed={'analyzer_time'}\u003e} SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of users using analyzer capacity minutes.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Cap Analyzers Consuming",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "593aa8f9-6a0d-42fd-98ee-362f0ab9d997",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Analyzers Consuming (CM)",
+      "qDef": "count(DISTINCT {\u003cSessionUsageMonthText={'$(=Date(today(),'MMM YYYY'))'}, SessionEntitlementConsumed={'analyzer'}\u003e}SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false,
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of analyzer users using their license (consuming a session) for the current month.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "# Analyzers Consuming (CM)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "7738f934-0f5b-48a0-bf98-b540ec406eb3",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Professional Assigned (CM)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'professional'}\u003e}OverviewUnits),0)\u003e0,\n    [# Professional Assigned (CM)]/\n\tMax({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'professional'}\u003e}OverviewUnits),0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The percent of assigned Professional users from the license for the current month.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Professional Assigned (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "BVvxUp",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Analyzer Assigned (CM)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer'}\u003e}OverviewUnits),0)\u003e0,\n    [# Analyzer Assigned (CM)]/\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer'}\u003e}OverviewUnits),0),0\n)\n\n\t",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The percent of assigned Analyzer users from the license for the current month.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Analyzer Assigned (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "a0385039-48dc-4c2b-9ada-3f0e2f237913",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Analyzer Assigned by Tenant (Current)",
+      "qDef": "Count({\u003cUserEntitlementAssigned={'analyzer'}\u003e}DISTINCT UserIDMaster)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of allocated analyzer licenses as of the time of the child application''s Entitlement Analyzer last reload. This differs from the [# Analyzer Assigned (CM)] measure, as that measure is calculated from the license which spans across all tenants.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Analyzer Assigned by Tenant (Current)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "b5e3e405-5075-419a-869e-1eaae07f351f",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Capacity Used (CM)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0)\u003e0,\n\t[# Capacity Used (CM)]/\n\tMax({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The % of capacity used from the license against the license total for the current month.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Capacity Used (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "fabb1116-e52b-4ad9-a59e-be0e593e8159",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Capacity Used (CM Summed)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0)\u003e0,\n\t[# Capacity Used (CM Summed)]/\n\tMax({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The % of capacity used from the summed up user minutes against the license total for the current month.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Capacity Used (CM Summed)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "eTyZPS",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Professional Assigned by Tenant (Current)",
+      "qDef": "Count({\u003cUserEntitlementAssigned={'professional'}\u003e}DISTINCT UserIDMaster)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of allocated professional licenses as of the time of the child application''s Entitlement Analyzer last reloads. This differs from the [# Professional Assigned (CM)] measure, as that measure is calculated from the license which spans across all tenants.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Professional Assigned by Tenant (Current)",
+      "description": "",
+      "tags": [
+        "by_tenant"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "e3091dad-5825-4c7f-843b-88c0d17bd469",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Professional Assigned by Tenant (CM)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'professional'}\u003e}OverviewUnits),0)\u003e0,\n\t[# Professional Assigned by Tenant (Current)] /\n\tMax({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'professional'}\u003e}OverviewUnits),0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The percent of assigned Professional users from the license for the current month by tenant.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Professional Assigned by Tenant (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "344f2393-4826-42df-a527-8e731a9c60bf",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "% Analyzer Assigned by Tenant (CM)",
+      "qDef": "If(\r\n\tAlt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer'}\u003e}OverviewUnits),0)\u003e0,\n\t[# Analyzer Assigned by Tenant (Current)] /\n\tMax({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer'}\u003e}OverviewUnits),0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0.00%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The percent of assigned Analyzer users from the license for the current month by tenant.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "% Analyzer Assigned by Tenant (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "jGmDfNd",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Professional Purchased (CM)",
+      "qDef": "Alt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'professional'}\u003e}OverviewUnits),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of purchased professional licenses for the current month.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Professional Purchased (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "pDvYdJ",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Professional Assigned (CM)",
+      "qDef": "Alt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'professional'}\u003e}OverviewUnitsUsed),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Professional Assigned (CM)",
+      "description": "The number of assigned professional licenses for the current month.",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "7a258820-c38f-448a-b5e5-4b7722cebe63",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Professional Assigned",
+      "qDef": "Alt(Max({\u003cOverviewEntitlementType={'professional'}\u003e}OverviewUnitsUsed),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Professional Assigned",
+      "description": "The number of assigned professional licenses for the month.",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "58b396fd-46df-46ba-a488-2b2fef2535c2",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Overage Purchased (CM)",
+      "qDef": "Alt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewOverage),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of overage capacity minutes for the current month.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Overage Purchased (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "850b35f1-b74c-450f-9a1c-8691874286f2",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Capacity Purchased (CM)",
+      "qDef": "Alt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer_time'}\u003e}OverviewUnits),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of purchased capacity minutes for the current month.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Capacity Purchased (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "335c55e0-83f5-400d-84d0-09663cc78333",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Analyzer Purchased (CM)",
+      "qDef": "Alt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer'}\u003e}OverviewUnits),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of purchased analyzer licenses for the current month.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Analyzer Purchased (CM)",
+      "description": "",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "048eb045-3271-4a1e-ad48-62bd720b9dc0",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Analyzer Assigned (CM)",
+      "qDef": "Alt(Max({\u003cOverviewAllotmentMonth={'$(=Date(today(),'MMM YYYY'))'}, OverviewEntitlementType={'analyzer'}\u003e}OverviewUnitsUsed),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Analyzer Assigned (CM)",
+      "description": "The number of assigned analyzer licenses for the current month.",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ad17e849-2ae2-459d-9996-f3ac99c2e579",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Analyzer Assigned",
+      "qDef": "Alt(Max({\u003cOverviewEntitlementType={'analyzer'}\u003e}OverviewUnitsUsed),0)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "# Analyzer Assigned",
+      "description": "The number of assigned analyzer licenses for the month.",
+      "tags": [
+        "global"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "07c29ac7-336e-4831-9b04-ea51b97b1c41",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Apps Accessed (Last 90)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 90 Days'},AppExists={1}\u003e} DISTINCT AppID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Apps Accessed (Last 90)",
+      "description": "The number of existing apps accessed over the last 90 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "c238e113-9c78-468d-882d-01752965943c",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Apps Accessed (Last 60)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 60 Days'},AppExists={1}\u003e} DISTINCT AppID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Apps Accessed (Last 60)",
+      "description": "The number of apps accessed over the last 60 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "423a6eb6-620a-44e4-ac96-5d5bb7bd57c8",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Apps Accessed (Last 30)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 30 Days'},AppExists={1}\u003e} DISTINCT AppID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Apps Accessed (Last 30)",
+      "description": "The number of existing apps accessed over the last 30 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "920281ae-441a-46be-ab27-065acb695c95",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Apps Accessed (Last 30-60)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 30-60 Days'},AppExists={1}\u003e} DISTINCT AppID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Apps Accessed (Last 30-60)",
+      "description": "The number of existing apps accessed over the last 30-60 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "bf26f9c4-c327-4d3a-9497-39016a45c041",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Apps Accessed (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([Apps Accessed (Last 30)] - [Apps Accessed (Last 30-60)]))\u003e=1,\n    Sign([Apps Accessed (Last 30)] - [Apps Accessed (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of existing apps accessed comparing the last 30 days to the prior 30-60 days.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Apps Accessed (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "5550f364-f88c-4771-b75d-1a8fec57d349",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Session Duration (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([Avg Session Duration (Last 30)] - [Avg Session Duration (Last 30-60)]))\u003e=1,\n    Sign([Avg Session Duration (Last 30)] - [Avg Session Duration (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of session duration comparing the last 30 days to the prior 30-60 days.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Avg Session Duration (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "e814c7b3-ce46-4387-a711-2deaea8bac5b",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Session Duration (Last 30-60)",
+      "qDef": "Interval((Sum({\u003cSessionUsageTimeframe={'Last 30-60 Days'}\u003e}SessionDurationMinutes)/Count({\u003cSessionUsageTimeframe={'Last 30-60 Days'}\u003e}DISTINCT SessionID))/24/60,'hh:mm')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Avg Session Duration (Last 30-60)",
+      "description": "The average duration of a user's session over the last 30-60 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "d5ded3f8-9775-4e43-a6af-e0ad472d36d9",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Session Duration (Last 90)",
+      "qDef": "Interval((Sum({\u003cSessionUsageTimeframe={'Last 90 Days'}\u003e}SessionDurationMinutes)/Count({\u003cSessionUsageTimeframe={'Last 90 Days'}\u003e}DISTINCT SessionID))/24/60,'hh:mm')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Avg Session Duration (Last 90)",
+      "description": "The average duration of a user's session over the last 90 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "2636c22b-a41c-41b7-a754-3a7352a10551",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Session Duration (Last 60)",
+      "qDef": "Interval((Sum({\u003cSessionUsageTimeframe={'Last 60 Days'}\u003e}SessionDurationMinutes)/Count({\u003cSessionUsageTimeframe={'Last 60 Days'}\u003e}DISTINCT SessionID))/24/60,'hh:mm')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Avg Session Duration (Last 60)",
+      "description": "The average duration of a user's session over the last 60 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "dc76870b-11a9-4a8b-ae1b-c98842163928",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Users Consuming (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([# Users Consuming (Last 30)] - [# Users Consuming (Last 30-60)]))\u003e=1,\n    Sign([# Users Consuming (Last 30)] - [# Users Consuming (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of users consuming comparing the last 30 days to the prior 30-60 days.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Users Consuming (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "f7aae2ed-57f2-465d-8d49-7a6ebf133fae",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Users Consuming (Last 30-60)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 30-60 Days'}\u003e} DISTINCT SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of users using a license (consuming a session) over the last 30-60 days.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Users Consuming (Last 30-60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "91b2733f-79ef-4989-a128-92fc90326310",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Sessions (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([# Sessions (Last 30)] - [# Sessions (Last 30-60)]))\u003e=1,\n    Sign([# Sessions (Last 30)] - [# Sessions (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of sessions comparing the last 30 days to the prior 30-60 days.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Sessions (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ee81d7b6-5a45-4971-957f-5676a2ef6c1f",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Sessions (Last 30-60)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 30-60 Days'}\u003e} DISTINCT SessionID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Sessions (Last 30-60)",
+      "description": "The number of sessions over the last 30-60 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "229ecb2c-e749-453c-ad83-d2f4642aa2fb",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reloads (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([Reloads (Last 30)] - [Reloads (Last 30-60)]))\u003e=1,\n    Sign([Reloads (Last 30)] - [Reloads (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of reloads comparing the last 30 days to the prior 30-60 days.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Reloads (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "5a0361d8-779e-4e40-a1bd-4cb49d86c058",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reloads (Last 30-60)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 30-60 Days'}\u003e} DISTINCT ReloadID)\r\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct reloads across all source tenants for existing apps over the last 30-60 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Reloads (Last 30-60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "aa5287ee-bee6-4969-afe8-4c2374c859b8",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Scheduled Reloads (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([Scheduled Reloads (Last 30)] - [Scheduled Reloads (Last 30-60)]))\u003e=1,\n    Sign([Scheduled Reloads (Last 30)] - [Scheduled Reloads (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of scheduled reloads comparing the last 30 days to the prior 30-60 days.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Scheduled Reloads (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "861c8ef9-b88a-4c57-88a1-c8b14b4c0b1b",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Scheduled Reloads (Last 30-60)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 30-60 Days'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct scheduled reloads across all source tenants for existing apps over the last 30-60 days.'"
+        }
+      },
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Scheduled Reloads (Last 30-60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "39894bba-af33-4398-80b0-78a8d16ade54",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Scheduled Reloads (Last 90)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 90 Days'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct scheduled reloads across all source tenants for existing apps over the last 90 days.'"
+        }
+      },
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Scheduled Reloads (Last 90)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "e4b7afc1-9bd7-40ab-9a17-2b5ff1b7574a",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Scheduled Reloads (Last 60)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 60 Days'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct scheduled reloads across all source tenants for existing apps over the last 60 days.'"
+        }
+      },
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Scheduled Reloads (Last 60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "99a2147f-b7d6-4c50-a26a-36f0a1fc04eb",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Scheduled Reloads (Last 30)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 30 Days'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct scheduled reloads across all source tenants for existing apps over the last 30 days.'"
+        }
+      },
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Scheduled Reloads (Last 30)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "01276a13-021b-42ef-ad16-8673d4a6a23c",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Scheduled Reloads (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([Failed Scheduled Reloads (Last 30)] - [Failed Scheduled Reloads (Last 30-60)]))\u003e=1,\n    Sign([Failed Scheduled Reloads (Last 30)] - [Failed Scheduled Reloads (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of scheduled reload failures comparing the last 30 days to the prior 30-60 days. Meaning, if there were 50 scheduled reload failures 30-60 days ago, but over the last 30 days there were 60, its trend is negative (more).'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Failed Scheduled Reloads (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "9b06afa1-40ac-4ebd-8fe5-3283ddea08a8",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Scheduled Reloads (Last 30-60)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 30-60 Days'},ReloadStatus={'FAILED'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed scheduled reloads across all source tenants for existing apps over the last 30-60 days.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed Scheduled Reloads (Last 30-60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "5a640c98-30c4-4281-b0fa-8ff695fdb8a4",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Reloads (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([Failed Reloads (Last 30)] - [Failed Reloads (Last 30-60)]))\u003e=1,\n    Sign([Failed Reloads (Last 30)] - [Failed Reloads (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of reload failures comparing the last 30 days to the prior 30-60 days. Meaning, if there were 50 reload failures 30-60 days ago, but over the last 30 days there were 60, its trend is negative (more).'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Failed Reloads (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "06bb98ac-0d64-47da-a90c-aa8a85e3af7a",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "zColor - Failed TOTAL Reloads (Last 30-60)",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadTimeframe={'Last 30-60 Days'}\u003e}TOTAL DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "zColor - Failed TOTAL Reloads (Last 30-60)",
+      "description": "*This is only used for color gradients!* The number of failed TOTAL reloads over the last 30-60 days.",
+      "tags": [
+        "color"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "4590cf21-0de5-4d0e-a749-a10fa1c816c1",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "zColor - Failed TOTAL Reloads (Last 30)",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadTimeframe={'Last 30 Days'}\u003e}TOTAL DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "zColor - Failed TOTAL Reloads (Last 30)",
+      "description": "*This is only used for color gradients!* The number of failed TOTAL reloads over the last 30 days.",
+      "tags": [
+        "color"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "f1cd40ad-2527-40f2-ba09-24663c93e8e3",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Reloads (Last 60)",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadTimeframe={'Last 60 Days'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of failed reloads across all source tenants over the last 60 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Failed Reloads (Last 60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "60186e04-0b12-4311-9691-b092466a0e56",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Reloads (Last 90)",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadTimeframe={'Last 90 Days'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of failed reloads across all source tenants over the last 90 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Failed Reloads (Last 90)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "96409420-33f2-4e4f-bbce-236bdc9ffe8c",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Reloads (Last 30-60)",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadTimeframe={'Last 30-60 Days'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of failed reloads across all source tenants over the last 30-60 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Failed Reloads (Last 30-60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "YTgh",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Reloads",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of failed reloads across all source tenants.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Failed Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "e6955890-1050-4c77-88f1-801cc6f39dad",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Reloads (Last 30)",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadTimeframe={'Last 30 Days'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of failed reloads across all source tenants over the last 30 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Failed Reloads (Last 30)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "XXWBqM",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Reload Duration (Indicator Last 30 vs 30-60)",
+      "qDef": "If(\r\n\tLen(Sign([Avg Reload Duration (Last 30)] - [Avg Reload Duration (Last 30-60)]))\u003e=1,\n    Sign([Avg Reload Duration (Last 30)] - [Avg Reload Duration (Last 30-60)]),\n    0\n)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The positive/flat/negative trend of a reload comparing the last 30 days to the prior 30-60 days. Meaning, if the reload on average took 1:00 30-60 days ago, but over the last 30 days it takes 1:30, its trend is negative (longer).'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Avg Reload Duration (Indicator Last 30 vs 30-60)",
+      "description": "",
+      "tags": [
+        "indicator"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "b3699578-cec7-4609-b406-56f87af20d15",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "zColor - Avg TOTAL Reload Duration (Last 30-60)",
+      "qDef": "TimeStamp(Avg({\u003cReloadTimeframe={'Last 30-60 Days'}\u003e}TOTAL ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "zColor - Avg TOTAL Reload Duration (Last 30-60)",
+      "description": "*This is only used for color gradients!* The average TOTAL duration of a reload over the last 30-60 days.",
+      "tags": [
+        "color"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "f80d18d2-f639-4ee8-8e56-f3ace28b4d76",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Reload Duration (Last 30-60)",
+      "qDef": "TimeStamp(Avg({\u003cReloadTimeframe={'Last 30-60 Days'}\u003e}ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The average duration of a reload over the last 30-60 days, measured in hh:mm:ss.'"
+        }
+      },
+      "numFormatFromTemplate": true
+    },
+    "qMetaDef": {
+      "title": "Avg Reload Duration (Last 30-60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "5bc1446c-e246-4ba7-b6b5-c4126e15b828",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Scheduled Reloads (Last 90)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 90 Days'},ReloadStatus={'FAILED'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed scheduled reloads across all source tenants for existing apps over the last 90 days.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed Scheduled Reloads (Last 90)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "0d71c142-72d8-4707-83f0-5cd9b69be6c6",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Scheduled Reloads (Last 60)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 60 Days'},ReloadStatus={'FAILED'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed scheduled reloads across all source tenants for existing apps over the last 60 days.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed Scheduled Reloads (Last 60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "638303f8-8218-488b-aae1-55f4521e754f",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Scheduled Reloads (Last 30)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 30 Days'},ReloadStatus={'FAILED'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed scheduled reloads across all source tenants for existing apps over the last 30 days.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed Scheduled Reloads (Last 30)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "6761bef2-ac7b-44ee-90a4-9e82aaf73b6f",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "zColor - Avg TOTAL Reload Duration (Last 30)",
+      "qDef": "TimeStamp(Avg({\u003cReloadTimeframe={'Last 30 Days'}\u003e}TOTAL ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "zColor - Avg TOTAL Reload Duration (Last 30)",
+      "description": "*This is only used for color gradients!* The average TOTAL duration of a reload over the last 30 days.",
+      "tags": [
+        "color"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "a190e4a5-bb3c-4831-a559-806357153163",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "zColor - Failed TOTAL Scheduled Reloads",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadType={'chronos'}\u003e}TOTAL DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "zColor - Failed TOTAL Scheduled Reloads",
+      "description": "*This is only used for color gradients!* The number of failed TOTAL scheduled reloads.",
+      "tags": [
+        "color"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "3f70f594-1507-4084-a26b-7caf5a119e3b",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "zColor - Avg TOTAL Session Duration",
+      "qDef": "Interval((Sum(TOTAL SessionDurationMinutes)/Count(TOTAL DISTINCT SessionID))/24/60,'hh:mm')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "zColor - Avg TOTAL Session Duration",
+      "description": "*This is only used for color gradients!* The average TOTAL duration of a user's session.",
+      "tags": [
+        "color"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "9a84fd28-aad9-450e-a5a9-186020cce528",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "zColor - Avg TOTAL Reload Duration",
+      "qDef": "TimeStamp(Avg(TOTAL ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "zColor - Avg TOTAL Reload Duration",
+      "description": "*This is only used for color gradients!* The average TOTAL duration of a reload.",
+      "tags": [
+        "color"
+      ]
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "196f1755-54a2-4683-a3c7-8d85f325ddbb",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Reload Duration (Last 90)",
+      "qDef": "TimeStamp(Avg({\u003cReloadTimeframe={'Last 90 Days'}\u003e}ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The average duration of a reload over the last 90 days, measured in hh:mm:ss.'"
+        }
+      },
+      "numFormatFromTemplate": true
+    },
+    "qMetaDef": {
+      "title": "Avg Reload Duration (Last 90)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "cf7dc33e-da6d-4d93-beb1-796ff024aa7c",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Reload Duration (Last 60)",
+      "qDef": "TimeStamp(Avg({\u003cReloadTimeframe={'Last 60 Days'}\u003e}ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The average duration of a reload over the last 60 days, measured in hh:mm:ss.'"
+        }
+      },
+      "numFormatFromTemplate": true
+    },
+    "qMetaDef": {
+      "title": "Avg Reload Duration (Last 60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "a23b549c-7db4-4f8d-9850-81b08f3d866c",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Reload Duration (Last 30)",
+      "qDef": "TimeStamp(Avg({\u003cReloadTimeframe={'Last 30 Days'}\u003e}ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The average duration of a reload over the last 30 days, measured in hh:mm:ss.'"
+        }
+      },
+      "numFormatFromTemplate": true
+    },
+    "qMetaDef": {
+      "title": "Avg Reload Duration (Last 30)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "bbfcb5e8-5d5a-4001-b92d-9a16ec6ab426",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reloads (Last 90)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 90 Days'}\u003e} DISTINCT ReloadID)\r\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct reloads across all source tenants for existing apps over the last 90 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Reloads (Last 90)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "b364b993-69d7-4888-9031-57285d136127",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reloads (Last 60)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 60 Days'}\u003e} DISTINCT ReloadID)\r\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct reloads across all source tenants for existing apps over the last 60 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Reloads (Last 60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ce934421-3240-4e1b-bcbe-8b329b643c5d",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reloads (Last 30)",
+      "qDef": "Count({\u003cReloadTimeframe={'Last 30 Days'}\u003e} DISTINCT ReloadID)\r\n\n",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct reloads across all source tenants for existing apps over the last 30 days.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Reloads (Last 30)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "dcee8507-bf2f-4be9-b977-8e6fc72d5512",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Session Duration (Last 30)",
+      "qDef": "Interval((Sum({\u003cSessionUsageTimeframe={'Last 30 Days'}\u003e}SessionDurationMinutes)/Count({\u003cSessionUsageTimeframe={'Last 30 Days'}\u003e}DISTINCT SessionID))/24/60,'hh:mm')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Avg Session Duration (Last 30)",
+      "description": "The average duration of a user's session over the last 30 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "51316e70-218b-402b-996f-d1aa2e0d45d2",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Users Consuming (Last 90)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 90 Days'}\u003e} DISTINCT SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of users using a license (consuming a session) over the last 90 days.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Users Consuming (Last 90)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "dff27114-40f5-4151-abd8-6a4de2f3a71e",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Users Consuming (Last 7)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 7 Days'}\u003e} DISTINCT SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of users using a license (consuming a session) over the last 7 days.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Users Consuming (Last 7)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "f1df6539-7871-4b38-9799-7ab6369ccf8f",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Users Consuming (Last 60)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 60 Days'}\u003e} DISTINCT SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of users using a license (consuming a session) over the last 60 days.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Users Consuming (Last 60)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "5f4d64a3-4a4b-4be2-8109-1fef285d2da4",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Users Consuming (Last 30)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 30 Days'}\u003e} DISTINCT SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of users using a license (consuming a session) over the last 30 days.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Users Consuming (Last 30)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ff4ec362-eea8-492f-a6ba-5d5dec21e001",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Users Consuming",
+      "qDef": "Count(DISTINCT SessionUserID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The number of users using a license (consuming a session).'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Users Consuming",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "HpMn",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Session Duration",
+      "qDef": "Interval((Sum(SessionDurationMinutes)/Count(DISTINCT SessionID))/24/60,'hh:mm')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Avg Session Duration",
+      "description": "The average duration of a user's session.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "9f76a7b3-9779-4fe7-be7a-da69b329f779",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Sessions (Last 7)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 7 Days'}\u003e} DISTINCT SessionID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Sessions (Last 7)",
+      "description": "The number of sessions over the last 7 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "422cee29-a3f8-4d98-8cfd-1b108a00474d",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Sessions (Last 90)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 90 Days'}\u003e} DISTINCT SessionID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Sessions (Last 90)",
+      "description": "The number of sessions over the last 90 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "PsNm",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Sessions (Last 30)",
+      "qDef": "Count({\u003cSessionUsageTimeframe={'Last 30 Days'}\u003e} DISTINCT SessionID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Sessions (Last 30)",
+      "description": "The number of sessions over the last 30 days.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "BezsW",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "# Sessions",
+      "qDef": "Count(DISTINCT SessionID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "# Sessions",
+      "description": "The number of sessions.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "b20db954-2534-4b39-b3a7-fe74f221de79",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Max Reload Duration",
+      "qDef": "TimeStamp(Max(ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The maximum duration of a reload.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Max Reload Duration",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ZCMwyLV",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App # Records",
+      "qDef": "Sum(AppTableNoOfRows)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "App # Records",
+      "description": "Count of records within all tables in an app data model.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "FuYyFEY",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App # Fields",
+      "qDef": "Sum(AppNumberOfDistinctFields)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Count of fields within an app''s data model.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "App # Fields",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "tZdXj",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App # Tables",
+      "qDef": "Sum(AppNoOfTables)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Count of tables within an app''s data model.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "App # Tables",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "WkFfej",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App RAM Size % Against Quota",
+      "qDef": "If(AppRAMSizeQuota\u003c\u003e'Unlimited',Num(Round(Avg(AppRAMPercentToQuota),.01),'##0%'),'Unlimited')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The percentage of the base RAM footprint per-app against the tenant quota, which is ' \u0026 If(GetPossibleCount(AppRAMSizeQuota)=1,If(IsNum(AppRAMSizeQuota),AppRAMSizeQuota/1024/1024 \u0026 ' MB.',AppRAMSizeQuota),'\u003cVaries Across Tenants\u003e')"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "App RAM Size % Against Quota",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "HnBEZq",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App Reload Peak RAM Against Quota",
+      "qDef": "Num(Sum(AppRAMPeakReload_Byte)/$(vAppRAMPeakReloadSizeQuota),'#,##0')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "0%",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "App Reload Peak RAM Against Quota",
+      "description": "The peak RAM used in an application's reload against the set quota, which is 5 GB.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "LmtP",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Apps",
+      "qDef": "Count({\u003cAppExists={1}\u003e}DISTINCT AppID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct existing apps across all source tenants.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Apps",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "fHGAU",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App Reload Peak RAM (MB)",
+      "qDef": "Num(Sum(AppRAMPeakReload_MB),'#,##0')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "App Reload Peak RAM (MB)",
+      "description": "The peak memory that an application consumes on reload, which can be significantly higher than the base RAM footprint due to temp RAM utilized for additional calculations, aggregations, memory intensive functions (think rand()), etc.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "bAJkLPJ",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "App RAM Footprint (MB)",
+      "qDef": "Num(Sum(AppRAM_MB),'#,##0')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "App RAM Footprint (MB)",
+      "description": "The memory footprint of an app when reloaded. \nNote that in practice, this is the baseline memory consumed by an app. As users make selections and navigate the app, additional memory will be cached by the app.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "d5e0106c-a1bf-4c50-80b7-2d363bae1530",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Min Reload Duration",
+      "qDef": "TimeStamp(Min(ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The minimum duration of a reload.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Min Reload Duration",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "GMHDrM",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Median Reload Duration",
+      "qDef": "TimeStamp(Median(ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The median duration of a reload.'"
+        }
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Median Reload Duration",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "PJzUJP",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reload Connections",
+      "qDef": "Count(DISTINCT ReloadConnectionID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct connections used in each app''s most recent reload.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Reload Connections",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "MFTHXm",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Avg Reload Duration",
+      "qDef": "TimeStamp(Avg(ReloadDuration),'hh:mm:ss')",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The average duration of a reload, measured in hh:mm:ss.'"
+        }
+      },
+      "numFormatFromTemplate": true
+    },
+    "qMetaDef": {
+      "title": "Avg Reload Duration",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "bf0ff187-8b26-4134-85d3-4897927bf778",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Automation Reloads",
+      "qDef": "Count({\u003cReloadType={'automations'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed automation reloads across all source tenants.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Failed Automation Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "fmCuMQ",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Automation Reloads",
+      "qDef": "Count({\u003cReloadType={'automations'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct automation reloads across all source tenants.'"
+        }
+      },
+      "isCustomFormatted": false,
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Automation Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "8bc84d4a-d242-41f5-b3d7-26542f71f126",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Enabled Reload Tasks",
+      "qDef": "Count({\u003cReloadTaskState={'Enabled'}\u003e}DISTINCT ReloadTaskID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct enabled reload tasks across all source tenants.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Enabled Reload Tasks",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "de2919ad-8222-458c-9a7c-f78c75cc36c8",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Disabled Reload Tasks",
+      "qDef": "Count({\u003cReloadTaskState={'Disabled'}\u003e}DISTINCT ReloadTaskID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct disabled reload tasks across all source tenants.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Disabled Reload Tasks",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "tDMhX",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reload Tasks",
+      "qDef": "Count(DISTINCT ReloadTaskID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct reload tasks across all source tenants.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Tasks",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "afd3cfff-bb95-46be-b241-3cf13c04beaf",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed In-App Reloads",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadType={'in app'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed in-app reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed In-App Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "UnVZKt",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "In-App Reloads",
+      "qDef": "Count({\u003cReloadType={'in app'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct in-app reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "In-App Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "5abeae06-ff9d-4253-8a70-c4afa8e4633d",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed API Reloads",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadType={'external'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed API reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed API Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "hGPar",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "API Reloads",
+      "qDef": "Count({\u003cReloadType={'external'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct API reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "API Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "EQfvps",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Hub Reloads",
+      "qDef": "Count({\u003cReloadType={'hub'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct Hub reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Hub Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "Vkggwc",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Hub Reloads",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadType={'hub'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed Hub reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed Hub Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "tnmvva",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Failed Scheduled Reloads",
+      "qDef": "Count({\u003cReloadStatus={'FAILED'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "isCustomFormatted": false,
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct failed scheduled reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Failed Scheduled Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "mvnJLG",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Succeeded Scheduled Reloads",
+      "qDef": "Count({\u003cReloadStatus={'SUCCEEDED'},ReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct succeeded scheduled reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      },
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Succeeded Scheduled Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "FNrumf",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Scheduled Reloads",
+      "qDef": "Count({\u003cReloadType={'chronos'}\u003e}DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct scheduled reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      },
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Scheduled Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "PPUUK",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Reloads",
+      "qDef": "Count(DISTINCT ReloadID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The count of distinct reloads across all source tenants for existing apps over the designated time range set in the Reload Analyzer.'"
+        }
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Reloads",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "GHSesQH",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Tenants",
+      "qDef": "Count(DISTINCT TenantID)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "F",
+        "qnDec": 2,
+        "qUseThou": 0,
+        "qFmt": "#,##0",
+        "qDec": ".",
+        "qThou": ","
+      },
+      "coloring": {},
+      "isCustomFormatted": false
+    },
+    "qMetaDef": {
+      "title": "Tenants",
+      "description": "'The count of distinct source tenants.'",
+      "tags": []
+    }
+  }
+]

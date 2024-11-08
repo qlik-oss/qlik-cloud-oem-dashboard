@@ -1,0 +1,953 @@
+///$tab ** Configuration **
+// The connection to the parent directory of the QlikMetaCollection directory, which houses all of the multi-tenant metadata.
+// This is the root location to read/write all QVDs to so that they can be loaded across tenants (S3, Azure Blob, or Google 
+// Cloud Storage). The final path will resemble "QlikMetaCollection/CompiledTenants/Monitoring/<Monitoring App Name>/<Table>.qvd". 
+// The location below should point to the parent directory of the "QlikMetaCollection" folder.
+
+SET vu_qlik_meta_collection_parent_dir = 'lib://:';				// Parent directory of the "QlikMetaCollection" folder (trailing slash optional)
+///$tab ** Optional Configuration **
+//=========
+// Whether or not to include the Console Settings Collector.
+// This app provides data supporting which features/capabilities
+// are enabled on each tenant. It is defaulted to off, as many 
+// of the underlying APIs it uses are private/experimental.
+SET vConsoleSettingsCollector	= 0; // 1 is on, 0 is off
+//=========
+
+//=========
+// >>Direct Customers Only<<
+// If you are using this application with varying licenses across 
+// each tenant. If true, this will hide the License table, as 
+// that will report incorrect numbers, as it assumes the license 
+// is the same across all tenants.
+SET vSeparateLicenses	= 0; // 1 is on, 0 is off
+//=========
+
+//=========
+// How fresh should the data be?
+SET vDataStaleAsOfHoursAgo	= 6;
+SET vDataStaleColor			= 'ARGB(255, 231, 76, 60)';
+//=========
+
+//=========
+// Gradient color thresholds for reload failures per month
+SET vReloadFailureMonthlyThresh	= 10;
+//=========
+
+//=========
+// Gradient color threshold for reload duration
+LET vReloadDurationThresh			= .125; // 3 hrs (percent of day)
+SET vReloadDurationThreshPercent	= .6; 	// 60%
+//=========
+
+//=========
+// Gradient color threshold for session duration
+LET vSessionDurationThresh			= .00347; 	// 5 minutes (percent of day)
+SET vSessionDurationThreshPercent	= .6; 		// 50%
+//=========
+
+//=========
+// If you are pulling an attribute from the apps description,
+// such as a version number like {v1.0.0}, enter the match pattern
+// start and end here as you would in the TextBetween() function.
+// Support for 1 match only. If you want multiple values, delimit
+// and edit the script to parse them out.
+SET vDescriptionAttributePatternMatchStart	= '{'; 	// example '{'  -- if none, leave ''
+SET vDescriptionAttributePatternMatchEnd	= '}'; 	// example '}' -- if none, leave ''
+//=========
+
+//=========
+// Entitlement thresholds (in percents, e.g., .6)
+// Colors must be in Hex (no #)
+SET vProLowThresh			= .6;
+SET vProHighThresh			= .8;
+SET vAnalyzerLowThresh		= .6;
+SET vAnalyzerHighThresh		= .8;
+SET vCapLowThresh			= .6;
+SET vCapHighThresh			= .8;
+SET vOverageLowThresh		= .6;
+SET vOverageHighThresh		= .8;
+SET vBelowLowThreshColor	= '006580'; 	// blue
+SET vBelowHighThreshColor	= 'FFC72A'; 	// topaz
+SET vAboveHighThreshColor	= 'E7004C'; 	// red
+//=========
+///$tab Start
+TRACE -------------;
+TRACE 🏁 OEM Dashboard... start! 🏁;
+TRACE -------------;
+///$tab Variables
+TRACE -------------;
+TRACE Working on Variables...;
+TRACE -------------;
+
+//=========
+// System variables
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='$ ###0.00;-$ ###0.00';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET FirstWeekDay=6;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-US';
+SET CreateSearchIndexOnReload=1;
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
+SET HidePrefix='_';
+//=========
+
+//=========
+// Log the time of this app to calculate if the data is "stale"
+LET vNow						= Now(1);
+//=========
+
+//=========
+// Peak Reload RAM in the standard tier is currently 34 GiB
+SET vAppRAMPeakReloadSizeQuota 	= 36507222016;
+//=========
+
+//=========
+// The field used to represent the "Reload User" field.
+// Can be one of "ReloadUserID", "ReloadUserSubject", "ReloadEmail", or "ReloadUserName"
+SET vPersonalUserField		= 'ReloadUserName';
+//=========
+
+//// Colors
+Set c_light_gray			= 'RGB(240,240,240)';
+Set c_threshold_red			= 'RGB(165,67,67)';
+Set c_red					= 'RGB(204,102,119)';
+Set c_orange 				= 'RGB(233,141,54)'; 
+Set c_yellow				= 'RGB(221,204,119)';
+Set c_blue					= 'RGB(68,119,170)';
+Set c_green					= 'RGB(17,119,51)';
+Set c_gray 					= 'RGB(150,150,150)';
+Set c_lightred 				= 'RGB(240,209,214)';
+Set c_lightblue 			= 'RGB(188,181,201)'; 
+Set c_green_emerald	= 'RGB(0,105,55)';
+//// ARGB colors -- requires input value to set the intensity (alpha) value of the color. Example using field [dual90]:  $(c_red_alpha(dual90)) 
+Set c_red_alpha				= 'ARGB($1,204,102,119)';
+Set c_orange_alpha			= 'ARGB($1,233,141,54)'; 
+Set c_yellow_alpha			= 'ARGB($1,221,204,119)';
+Set c_blue_alpha			= 'ARGB($1,0,101,128)';
+Set c_green_alpha			= 'ARGB($1,17,119,51)';
+Set c_gray_alpha			= 'ARGB($1,150,150,150)';
+Set c_red_breeze_alpha		= 'ARGB($1,155,58,59)';
+Set c_orange_breeze_alpha	= 'ARGB($1,233,141,54)';
+Set c_teal_breeze_alpha		= 'ARGB($1,19,118,122)';
+Set c_green_breeze_alpha	= 'ARGB($1,101,177,99)';
+Set c_red_issue_alpha		= 'ARGB($1,231,76,60)';
+SET c_green_emerald_alpha	= 'ARGB($1,210,220,228)'; // This is actually gray as the green was too overwhelming, and renaming the variable would have been a lot of work
+Set c_red_0_green_alpha		= 'IF($1=0,c_red,ARGB($1,101,177,99))';
+
+//=========
+// Check for trailing slash
+LET vu_qlik_meta_collection_parent_dir = If(Right('$(vu_qlik_meta_collection_parent_dir)',1)='/',Left('$(vu_qlik_meta_collection_parent_dir)',Len('$(vu_qlik_meta_collection_parent_dir)')-1),'$(vu_qlik_meta_collection_parent_dir)');
+//=========
+
+TRACE -------------;
+TRACE Finished Variables.;
+TRACE -------------;
+///$tab Entitlement Analyzer
+//===========
+// All tables will load * and then drop any unnecessary fields
+// and/or any fields that were aliased. This allows new fields
+// to come into the model from upstream. Commented out fields
+// without the "DROP" prefixed are fields that are brought in,
+// and left commented out for clarity on what fields are being
+// loaded.
+
+TRACE -------------;
+TRACE Loading Entitlement Analyzer data...;
+TRACE -------------;
+
+TenantMetadata:
+LOAD
+	*
+//     TenantID,
+//     TenantName,
+//     TenantDataCenter,
+//     TenantCreatedDate,
+//     TenantStatus,
+//     Hostname,
+//	   LastReloadStartTime
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/TenantMetadata.qvd]
+(qvd);
+
+SourceAppLastReloadTIme:
+LOAD
+    TenantID,
+    'Entitlement Analyzer' AS SourceApp,
+    Timestamp(LastReloadStartTime) AS SourceAppLastReloadStartTime,
+    Interval('$(vNow)'-Timestamp(LastReloadStartTime),'D hh@mm#') AS SourceAppDataAge,
+    If(Timestamp(LastReloadStartTime)<=Timestamp('$(vNow)' - $(vDataStaleAsOfHoursAgo)/24),1,0) AS SourceAppIsStale
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/TenantMetadata.qvd]
+(qvd);
+
+Map_UserEntitlementAssignmentCurrent:
+MAPPING LOAD DISTINCT
+	userSubject,
+    CurrentAssigneeType
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/CurrentAssignments.qvd]
+(qvd);
+
+EntitlementAssignment:
+LOAD DISTINCT
+	*,
+    ApplyMap('Map_UserEntitlementAssignmentCurrent',userSubject,'unassigned') AS UserEntitlementAssigned,
+//     TenantID,
+//     %TenantUserKey,
+	UserIdMaster AS UserIDMaster,
+    assigneeName AS UserName,
+    userSubject AS UserSubject
+//     Assigned_Excess AS UserAssignedExcess,
+//     Assigned_Date AS UserAssignedDate
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Entitlement_Assignment.qvd]
+(qvd);
+
+DROP FIELDS	
+			Entitlement_Assigned
+            ,userSubject
+            ,UserIdMaster
+			,assigneeName
+            ,Assigned_Excess
+            ,Assigned_Date
+	FROM EntitlementAssignment;
+
+//===========
+// Create a map of UserID -> UserName for the App Analyzer model
+// which only has UserSubject as UserName
+Map_UserSubject_UserName:
+MAPPING LOAD DISTINCT
+	UserSubject,
+    UserName
+RESIDENT EntitlementAssignment;
+//===========
+
+EntitlementConsumption:
+LOAD
+	*,
+    "userId" AS SessionUserID,
+//    %TenantUserKey,
+// DROP     AppName,
+// DROP		AppNameUnique,
+// DROP     AppOwnerName,
+// DROP     SpaceID,
+// DROP     SpaceName,
+// DROP		SpaceNameUnique,
+// DROP     SpaceType,
+    allotmentId AS SessionAllotmentID,
+    appId AS AppID,
+    capacityUsed AS CapacityUsed,
+    duration AS SessionDuration,
+    durationInterval AS SessionDurationInterval,
+    durationMinutes AS SessionDurationMinutes,
+//     email,
+    endTime AS SessionEndTime,
+    endTimeDate AS SessionEndTimeDate,
+    Hour(endTime) AS SessionEndTimeHour,
+    id AS SessionConsumptionID,
+    minutesUsed AS SessionMinutesUsed,
+    consumerName AS SessionConsumerName,
+    sessionId AS SessionID,
+    Entitlement_Consumed AS SessionEntitlementConsumed,
+    Date(Floor(endTime), 'MMM YYYY') AS SessionUsageMonth,
+    Dual(Month(Floor(endTime))&' '&Year( Floor(endTime)),Num(MonthEnd(endTime))) AS SessionUsageMonthText
+//    %OverviewKey,
+//    NoOfTimesProfessionalEntitlementWasUsedAfterBeingAssigned,
+//    ProfessionalAssignmentToConsumptionDuration,
+//    NoOfTimesAnalyzerEntitlementWasUsedAfterBeingAssigned,
+//    AnalyzerAssignmentToConsumptionDuration
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Entitlement_Consumption.qvd]
+(qvd);
+
+DROP FIELDS	
+			userId
+            ,AppName
+            ,AppNameUnique
+            ,SpaceNameUnique
+			,AppOwnerName
+            ,SpaceID
+            ,SpaceName
+            ,SpaceType
+            ,allotmentId
+            ,appId
+            ,capacityUsed
+            ,duration
+            ,durationInterval
+            ,durationMinutes
+            ,endTime
+            ,endTimeDate
+            ,id
+            ,minutesUsed
+            ,consumerName
+            ,sessionId
+            ,Entitlement_Consumed
+	FROM EntitlementConsumption;
+
+
+//===========
+// Concatenate on AppIDs without any consumption and fabricate keys
+// so selections on Apps with no consumption can fully traverse
+// the model
+BridgeNullAppIDs:
+LOAD DISTINCT
+    AppID,
+    TenantID
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Apps.qvd](qvd)
+WHERE NOT EXISTS(AppID);
+
+LEFT JOIN(BridgeNullAppIDs)
+LOAD DISTINCT
+    TenantID,
+    %TenantUserKey
+RESIDENT EntitlementAssignment
+WHERE NOT Len(UserIDMaster)>0;
+
+CONCATENATE(EntitlementConsumption)
+LOAD 
+	AppID,
+    %TenantUserKey
+RESIDENT BridgeNullAppIDs;
+
+DROP TABLE BridgeNullAppIDs;
+//===========
+
+Overview:
+LOAD
+	*,
+//     %OverviewKey,
+    license_name AS OverviewEntitlementType,
+    usageClass AS OverviewEntitlementClass,
+    units AS OverviewUnits,
+    allotmentMonth AS OverviewAllotmentMonth,
+    unitsUsed AS OverviewUnitsUsed,
+    overage AS OverviewOverage
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Overview.qvd]
+(qvd);
+
+DROP FIELDS	
+			license_name
+            ,usageClass
+			,units
+            ,allotmentMonth
+            ,unitsUsed
+            ,overage
+	FROM Overview;
+
+
+LastAssignedTime:
+LOAD
+	*,
+    Assigned_Date AS UserAssignedDate,
+    AssignedTimeframe AS UserAssignedTimeframe
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Last_AssignedTime.qvd]
+(qvd);
+
+DROP FIELDS	
+			Assigned_Date
+            ,AssignedTimeframe
+	FROM LastAssignedTime;
+
+LastUsageTime:
+LOAD
+	*,
+    endTimeDate AS SessionEndTimeDate,
+    UsageTimeframe AS SessionUsageTimeframe
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Last_UsageTime.qvd]
+(qvd);
+
+DROP FIELDS	
+			endTimeDate
+            ,UsageTimeframe
+	FROM LastUsageTime;
+
+TRACE -------------;
+TRACE Finished loading Entitlement Analyzer data.;
+TRACE -------------;
+
+
+///$tab App Analyzer
+TRACE -------------;
+TRACE Loading App Analyzer data...;
+TRACE -------------;
+
+TenantMetadata:
+LOAD
+	*
+//     TenantID,
+//     TenantName,
+//     TenantDataCenter,
+//     TenantCreatedDate,
+//     TenantStatus,
+//     Hostname,
+//     LastReloadStartTime
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/TenantMetadata.qvd]
+(qvd) WHERE NOT EXISTS(TenantID);
+
+SourceAppLastReloadTIme:
+LOAD
+    TenantID,
+    'App Analyzer' AS SourceApp,
+    Timestamp(LastReloadStartTime) AS SourceAppLastReloadStartTime,
+    Interval('$(vNow)'-Timestamp(LastReloadStartTime),'D hh@mm#') AS SourceAppDataAge,
+    If(Timestamp(LastReloadStartTime)<=Timestamp('$(vNow)' - $(vDataStaleAsOfHoursAgo)/24),1,0) AS SourceAppIsStale
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/TenantMetadata.qvd]
+(qvd);
+
+Apps:
+LOAD
+	*,
+    1 AS AppExists,
+    Date(Floor(AppLastReloadTime)) AS AppLastReloadTimeDate,
+    ApplyMap('Map_UserSubject_UserName',Lower(_AppOwnerSubjectForOEMDash),'<Owner Name Not Found>') AS AppOwnerNameTemp,
+    If(
+    	'$(vDescriptionAttributePatternMatchStart)'='' AND '$(vDescriptionAttributePatternMatchEnd)'='',Null(),
+    	Trim(TextBetween(AppDescription,'$(vDescriptionAttributePatternMatchStart)','$(vDescriptionAttributePatternMatchEnd)'))) AS AppDescriptionAttribute
+//     AppID,
+//	   AppNameUnique
+//	   AppName
+//     SpaceID,
+//     AppLastReloadTime,
+//     AppHasSectionAccess,
+// DROP     TenantID,
+//     AppCreatedTime,
+//     AppUpdatedTime,
+//     AppCreatorID,
+//     AppUpdaterID,
+//     AppIsFavorited,
+//     AppOwnerID,
+//     AppDescription,
+//     AppLastReloadTimeLocalServerTime,
+//     AppOriginalID,
+//     AppPublished,
+//     AppPublishedTime,
+//     AppEncrypted,
+//     "App Reload CPU Time (ms)",
+//     AppRAMPeakReload_Byte,
+//     AppRAMPeakReload_GB,
+//     AppRAMPeakReload_MB,
+//     AppReloadCPUTimeOverThreshold,
+//     AppPeakRAMOverThreshold,
+//     AppRAM_Bytes,
+//     AppHasDirectQueryMode,
+//     AppRAM_GB,
+//     AppRAM_MB,
+//     AppNoOfTables,
+//     AppContainsSyntheticKeys,
+//     "AppContainsDataIsland(s)",
+//     AppNumberOfDistinctFields,
+//     AppTableNoOfRows,
+//     "AppContainsCircularReference(s)",
+//     AppTableNoOfRowsOverThreshold,
+//     AppNumberOfDistinctFieldsOverThreshold,
+//     AppLastReloadedBucket,
+//     AppRAMOverThreshold,
+//     AppRAMPercentToQuota,
+//     _AppRAMPercentToQuotaColor,
+//     AppRAMPeakReloadPercentToQuota,
+//     _AppRAMPeakReloadPercentToQuotaColor,
+//	   _AppOwnerSubjectForOEMDash
+// DROP     AppName,
+//	   _KeyTags
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Apps.qvd]
+(qvd);
+
+DROP FIELDS	
+			TenantID
+            ,_AppOwnerSubjectForOEMDash
+	FROM Apps;
+    
+RENAME FIELD AppOwnerNameTemp TO AppOwnerName;
+
+Spaces:
+LOAD
+	*
+//     SpaceID,
+//     fortressId,
+//     SpaceType,
+//     SpaceOwnerID,
+//     SpaceName,
+//     SpaceDescription,
+//     SpaceCreatedTime,
+//     SpaceCreatedBy,
+//     SpaceNameUnique
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Spaces.qvd]
+(qvd);
+
+AppRAMSizeQuotas:
+LOAD
+	*
+//     AppRAMSizeQuota,
+//     AppRAMSizeThreshold,
+//     AppRAMPeakReloadSizeThreshold,
+//     AppRecordCountThreshold,
+//     TableRecordCountThreshold,
+//     FieldValueCountThreshold,
+//     FieldCardinalityThreshold,
+//     "NoOfFields",
+//     ReloadCPUTimeThreshold,
+//     TenantID
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/AppRAMSizeQuotas.qvd]
+(qvd);
+
+Quotas:
+LOAD
+	*
+//     QuotaResource,
+//     QuotaType,
+//     TenantID,
+//     Quota_MB,
+//     Quota_GB,
+//     QuotaSpace,
+//     QuotaUnit,
+//     QuotaUsage
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Quotas.qvd]
+(qvd);
+
+AppLastReloadTime:
+LOAD DISTINCT
+//     AppLastReloadTime,
+    "Month" AS AppLastReloadMonth,
+    "Week Beginning" AS AppLastReloadWeekBeginning,
+    Date("Date") AS AppLastReloadTimeDate
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/AppLastReloadTime.qvd]
+(qvd);
+
+LastAppLastReloadTime:
+LOAD
+	*
+//     AppLastReloadTime,
+//     Timeframe
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Last_AppLastReloadTime.qvd]
+(qvd);
+
+LOAD
+	*
+//     AppTagID,
+//     AppTag,
+//     _KeyTags
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/AppTags.qvd]
+(qvd);
+
+TRACE -------------;
+TRACE Finished loading App Analyzer data.;
+TRACE -------------;
+///$tab Reload Analyzer
+TRACE -------------;
+TRACE Loading Reload Analyzer data...;
+TRACE -------------;
+
+TenantMetadata:
+LOAD
+	*
+//     TenantID,
+//     TenantName,
+//     TenantDataCenter,
+//     TenantCreatedDate,
+//     TenantStatus,
+//     Hostname,
+//     LastReloadStartTime
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/TenantMetadata.qvd]
+(qvd) WHERE NOT EXISTS(TenantID);
+
+SourceAppLastReloadTIme:
+LOAD
+    TenantID,
+    'Reload Analyzer' AS SourceApp,
+    Timestamp(LastReloadStartTime) AS SourceAppLastReloadStartTime,
+    Interval('$(vNow)'-Timestamp(LastReloadStartTime),'D hh@mm#') AS SourceAppDataAge,
+    If(Timestamp(LastReloadStartTime)<=Timestamp('$(vNow)' - $(vDataStaleAsOfHoursAgo)/24),1,0) AS SourceAppIsStale
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/TenantMetadata.qvd]
+(qvd);
+
+Reloads:
+LEFT KEEP(Apps)
+LOAD
+	*,
+    Week(ReloadStartDate) AS ReloadStartWeek,
+    WeekDay(ReloadStartDate) AS ReloadStartWeekDay,
+    Month(ReloadStartDate) AS ReloadStartMonth,
+    Year(ReloadStartDate) AS ReloadStartYear,
+    Dual(Month(Date(ReloadStartDate)) & ' ' & Year(ReloadStartDate),MonthStart(ReloadStartDate)) AS ReloadStartMonthYear,
+    Dual(Year(ReloadStartDate) & ' - ' & Date(WeekStart(ReloadStartDate)),WeekStart(ReloadStartDate)) AS ReloadStartYearWeekStart
+//     ReloadUserID,
+//     AppID,
+//     ReloadDuration,
+//     ReloadID,
+//     ReloadType,
+//     ReloadStatus,
+//     ReloadStartDate,
+//     ReloadCreationTime,
+//     ReloadStartTime,
+//     ReloadStartHour,
+//     ReloadStartMinute,
+//     ReloadEndTime,
+//     ReloadEngineTime,
+//     _AuditReloadKey,
+//     ReloadPeakReloadRAM_GB,
+//     ReloadPeakReloadRAM_MB,
+//     BaseRAMFootprint,
+//     _ReloadExecutionConcurrencyKey,
+//     ReloadDurationBucket
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/Reloads.qvd]
+(qvd);
+
+LEFT JOIN(Reloads)
+LOAD
+	*
+//     _UserKey,
+//     ReloadUserID,
+//     ReloadUserStatus,
+//     ReloadUserName,
+//     ReloadUserSubject,
+//     ReloadUserEmail
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/Users.qvd]
+(qvd);
+
+ReloadAnalyzerUsersCounter:
+LOAD DISTINCT
+	_UserKey
+RESIDENT Reloads;
+
+LET vReloadAnalyzerUsersCounter = NoOfRows('ReloadAnalyzerUsersCounter');
+
+DROP TABLE ReloadAnalyzerUsersCounter;
+
+AuditReloadLineage:
+LOAD
+	*
+//     DataConnectionID,
+//     _AuditReloadKey,
+//     ReloadConnectionID,
+//     ReloadConnectionStorageProvider,
+//     ReloadConnectionType,
+//     "FileName",
+//     FileType,
+//     ReloadDataConnectionName,
+//     ReloadDataConnectionSpaceName,
+//     ReloadDataConnectionSpaceType,
+//     FileNameUnique
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/AuditReloadLineage.qvd]
+(qvd);
+
+DataConnections:
+LOAD
+	*
+//     DataConnectionID,
+//     DataConnectionCreatedTime,
+//     DataConnectionDataSourceID,
+//     DataConnectionStatement,
+//     DataConnectionName,
+//     DataConnectionType,
+//     DataConnectionSpaceID,
+//     DataConnectionSpaceName,
+//     DataConnectionSpaceType,
+//     DataConnectionUpdated,
+//     DataConnectionUserID,
+//     DataConnectionOwner,
+//     DataConnectionNameUnique,
+//     DataConnectionTenantID,
+//     DataConnectionTenantName
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/DataConnections.qvd]
+(qvd);
+
+AuditReloadErrors:
+LOAD
+	*
+//     _AuditReloadKey,
+//     ReloadErrorDescription,
+//     ReloadError,
+//     ReloadLine,
+//     ReloadLineNumber
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/AuditReloadErrors.qvd]
+(qvd);
+
+ReloadTasks:
+LEFT KEEP (Apps)
+LOAD
+	*
+//     AppID,
+//     ReloadTaskID,
+//     ReloadTaskType,
+//     ReloadTaskActive,
+//     ReloadTaskStartDateTime,
+//     ReloadTaskState,
+//     ReloadTaskTimeZone,
+//     ReloadTaskNextExecutionTime,
+//     ReloadTaskLastExecutionTime,
+//     ReloadTaskRecurrence,
+//     ReloadTaskRecurrenceRate
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/ReloadTasks.qvd]
+(qvd);
+
+LastReloadTime:
+LOAD
+	*
+//     ReloadStartTime,
+//     ReloadTimeframe
+FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/Last_ReloadTime.qvd]
+(qvd);
+
+TRACE -------------;
+TRACE Finished loading Reload Analyzer data.;
+TRACE -------------;
+
+///$tab Console Settings Collector
+IF $(vConsoleSettingsCollector)=1 THEN
+
+	TRACE -------------;
+    TRACE Loading Console Settings Collector data...;
+    TRACE If you are experiencing issues with loading this data, you can toggle off the vConsoleSettingsCollector variable.;
+    TRACE -------------;
+
+    SourceAppLastReloadTIme:
+    LOAD
+        TenantID,
+        'Console Settings Collector' AS SourceApp,
+        Timestamp(LastReloadStartTime) AS SourceAppLastReloadStartTime,
+        Interval('$(vNow)'-Timestamp(LastReloadStartTime),'D hh@mm#') AS SourceAppDataAge,
+        If(Timestamp(LastReloadStartTime)<=Timestamp('$(vNow)' - $(vDataStaleAsOfHoursAgo)/24),1,0) AS SourceAppIsStale
+    FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Tenants.qvd]
+    (qvd);
+
+    Tenants:
+    LOAD
+        *
+    //     TenantID,
+    // DROP     TenantName,
+    // DROP     TenantCreatedByUser,
+    // DROP     TenantDataCenter,
+    // DROP     TenantCreated,
+    // DROP     TenantLastUpdated,
+    // DROP     TenantStatus,
+    // DROP		LastReloadStartTime,
+    //     AutoAssignCreateSharedSpacesRoleToProfessionalsEnabled,
+    //     AnalyticCreationEnabled,
+    //     DynamicViewEnabled,
+    //     ODAGEnabled,
+    //     AlertsFeatureOperationStatus,
+    //     AlertsFeatureOperationStatusChange,
+    //     AlertsLicenseStatus,
+    //     AlertsConsumed,
+    //     AlertsLimits,
+    //     AlertsEnabled,
+    //     AlertsMaxRecipientsInTargetAccess,
+    //     MLEndpointsID,
+    //     MLEndpointsEnabled,
+    //     NotesEnabled,
+    //     NotesLastFetched,
+    //     NotesReason,
+    //     GroupCreationEnabled,
+    //     GroupSyncIdPGroupsEnabled,
+    //     LineageEnabled,
+    //     LineageUIEnabled,
+    //     ImpactAnalysisEnabled,
+    //     EntitlementProfessionalAutoEnabled,
+    //     EntitlementAnalyzerAutoEnabled,
+    //     UsageMetricsEnabled,
+    //     APIKeysEnabled,
+    //     APIKeyMaxExpiry,
+    //     APIKeyMaxPerUser,
+    //     APIKeySCIMExternalClientExpiry,
+    //     SharingReportSubscriptionEnabled,
+    //     SharingEnabled,
+    //     SharingMaxRecipients,
+    //     SharingMaxSubscriptionRecipients,
+    //     SharingSubscriptionStatus,
+    //     SHaringSubscriptionStatusChangeTime,
+    //     OfflineEnabled,
+    //     SharesEnabled,
+    //     SMTPID,
+    //     SMTPServerAddress,
+    //     SMTPServerPort,
+    //     SMTPSecurityType,
+    //     SMTPEmailAddress,
+    //     SMTPModificationTime,
+    //     SMTPIsValid,
+    //     SMTPAuthFailures,
+    //     SMTPUserName,
+    //     SMTPPasswordExists
+    FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Tenants.qvd]
+    (qvd);
+
+    DROP FIELDS	
+                TenantName
+                ,TenantCreatedByUser
+                ,TenantDataCenter
+                ,TenantCreated
+                ,TenantLastUpdated
+                ,TenantStatus
+                ,LastReloadStartTime
+        FROM Tenants;
+
+    Hostnames:
+    LOAD
+        *
+    //     TenantHostname,
+    //     TenantID
+    FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Hostnames.qvd]
+    (qvd);
+    
+	TRACE -------------;
+    TRACE Finished loading Console Settings Collector data.;
+    TRACE -------------;
+
+ELSE
+
+	TRACE -------------;
+    TRACE The Console Settings Collector data will not be loaded. To load this data, you can enable the vConsoleSettingsCollector variable.;
+    TRACE -------------;
+    
+END IF
+///$tab Meta
+TRACE -------------;
+TRACE Calculating file metadata...;
+TRACE -------------;
+
+MetaSources:
+LOAD * INLINE [
+    _MetaFileName
+	$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/TenantMetadata.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/CurrentAssignments.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Entitlement_Assignment.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Entitlement_Consumption.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Overview.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Last_AssignedTime.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/Last_UsageTime.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/TenantMetadata.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Apps.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Spaces.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/AppRAMSizeQuotas.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Quotas.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/AppLastReloadTime.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/Last_AppLastReloadTime.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/TenantMetadata.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/Reloads.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/Users.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/AuditReloadLineage.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/DataConnections.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/AuditReloadErrors.qvd
+    $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/ReloadTasks.qvd
+
+];
+
+IF $(vConsoleSettingsCollector)=1 THEN
+
+    CONCATENATE(MetaSources)
+    LOAD * INLINE [
+        _MetaFileName
+        $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Tenants.qvd
+        $(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Hostnames.qvd
+    ];
+    
+END IF
+
+Meta:
+LOAD
+	*,
+    Interval('$(vNow)'-Timestamp(_MetaSourceFileTime),'D hh@mm#') AS ParentQVDDataAge,
+    If(Timestamp(_MetaSourceFileTime)<=Timestamp('$(vNow)' - $(vDataStaleAsOfHoursAgo)/24),1,0) AS ParentQVDIsStale
+    ;
+LOAD 
+    _MetaFileName,
+    FileSize(_MetaFileName) AS _MetaSourceFileSize,
+    FileTime(_MetaFileName) AS _MetaSourceFileTime,
+    Subfield(_MetaFileName,'/',-2) AS _MetaSourceApp,
+    Subfield(_MetaFileName,'/',-1) AS _MetaSourceFile,
+    QvdNoOfRecords(_MetaFileName) AS _MetaNoOfQVDRows
+RESIDENT MetaSources;
+
+DROP TABLE MetaSources;
+
+TRACE -------------;
+TRACE Finished calculating file metadata.;
+TRACE -------------;
+///$tab Transform
+TRACE -------------;
+TRACE Performing final transformations...;
+TRACE -------------;
+
+DROP FIELDS	
+			LastReloadStartTime
+	FROM TenantMetadata;
+
+AllMonitoringApps:
+LOAD * INLINE [
+    MonitoringApp
+    App Analyzer
+    Entitlement Analyzer
+    Reload Analyzer
+];
+
+IF $(vConsoleSettingsCollector)=1 THEN
+
+    CONCATENATE(AllMonitoringApps)
+    LOAD * INLINE [
+    	MonitoringApp
+        Console Settings Collector
+    ];
+    
+END IF
+
+LEFT JOIN(SourceAppLastReloadTIme)
+LOAD DISTINCT
+	If(Count(SourceApp)=If($(vConsoleSettingsCollector),4,3),Dual('True',1),Dual('False',0)) AS TenantHasAllChildAppsConfigured,
+    TenantID
+RESIDENT SourceAppLastReloadTIme
+GROUP BY TenantID;
+
+Map_TenantIDSourceApp_Exists:
+MAPPING LOAD DISTINCT
+	TenantID & '|' & SourceApp AS _KeyTenantSourceAppExists,
+    1
+RESIDENT SourceAppLastReloadTIme;
+
+AllMonitoringAppsCartesian:
+LOAD DISTINCT
+	TenantID
+RESIDENT SourceAppLastReloadTIme;
+
+JOIN(AllMonitoringAppsCartesian)
+LOAD DISTINCT
+    MonitoringApp AS SourceAppConfigured
+RESIDENT AllMonitoringApps;
+
+SourceAppNotConfigured:
+LOAD
+	TenantID,
+    Dual(SourceAppConfigured,RowNo()) AS SourceAppNotConfigured
+RESIDENT AllMonitoringAppsCartesian
+WHERE ApplyMap('Map_TenantIDSourceApp_Exists',TenantID & '|' & SourceAppConfigured)<>1;
+
+DROP TABLE AllMonitoringAppsCartesian;
+
+RENAME TABLE TenantMetadata TO TEMP;
+RENAME FIELD TenantName TO TenantNameTEMP;
+
+TenantMetadata:
+LOAD
+	*,
+    Dual(TenantNameTEMP,AutoNumber(TenantID)) AS TenantName
+RESIDENT TEMP
+ORDER BY TenantNameTEMP ASC;
+
+DROP TABLE TEMP;
+DROP FIELD TenantNameTEMP;
+
+DROP TABLE AllMonitoringApps;
+
+TRACE -------------;
+TRACE Final transformations complete.;
+TRACE -------------;
+///$tab Finish
+TRACE -------------;
+TRACE 🎉 All Finished! 🎉;
+TRACE -------------;

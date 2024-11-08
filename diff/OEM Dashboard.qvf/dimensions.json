@@ -1,0 +1,2107 @@
+[
+  {
+    "qInfo": {
+      "qId": "3641ec1d-c7c1-4090-b45e-e761bd91dafc",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=UserEntitlementAssigned"
+      ],
+      "qFieldLabels": [
+        "User Entitlement Assigned"
+      ],
+      "title": "User Entitlement Assigned",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The user''s most recent license type.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "3641ec1d-c7c1-4090-b45e-e761bd91dafc",
+        "changeHash": "0.5541634429947482",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "User Entitlement Assigned",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "HZcgn",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppLastReloadTimeDate"
+      ],
+      "qFieldLabels": [
+        "Last Reload (Date)"
+      ],
+      "qLabelExpression": "='Last Reload'",
+      "title": "Last Reload (Date)",
+      "coloring": {
+        "changeHash": "0.6149688404485649",
+        "hasValueColors": false,
+        "colorMapRef": "HZcgn"
+      }
+    },
+    "qMetaDef": {
+      "title": "Last Reload (Date)",
+      "description": "Date when the app was last reloaded.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "DgZEjSx",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStartMonthYear"
+      ],
+      "qFieldLabels": [
+        "Reload Start Year Month"
+      ],
+      "title": "Reload Start Year Month",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The year and month in which the reload was started.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.3107387514617792",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Start Year Month",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "bGnUGy",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "H",
+      "qFieldDefs": [
+        "SessionEndTimeDate",
+        "SessionEndTimeHour"
+      ],
+      "qFieldLabels": [],
+      "title": "Session End Time Date/Hour",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The Date -\u003e Hour in which the session ended.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.7416564863621178",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Session End Time Date/Hour",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "kEKy",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SessionEndTimeHour"
+      ],
+      "qFieldLabels": [
+        "Session End Time Hour"
+      ],
+      "title": "Session End Time Hour",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The hour of the day in which the session ended.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8052082655350938",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Session End Time Hour",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "RADjtb",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SessionEndTimeDate"
+      ],
+      "qFieldLabels": [
+        "Session End Time Date"
+      ],
+      "title": "Session End Time Date",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The date in which the end of the session resides within.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5955833346391814",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Session End Time Date",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "LgXFwj",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantDataCenter"
+      ],
+      "qFieldLabels": [
+        "Tenant Data Center"
+      ],
+      "title": "Tenant Data Center",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The data center where the tenant is located.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8344115180304845",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Tenant Data Center",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "gWcATnj",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStartYearWeekStart"
+      ],
+      "qFieldLabels": [
+        "Reload Start Year Week"
+      ],
+      "title": "Reload Start Year Week",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The year and start of the week that the reload began within.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.6181557810143308",
+        "hasValueColors": false,
+        "colorMapRef": "gWcATnj"
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Start Year Week",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "dKwKqW",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppDescriptionAttribute"
+      ],
+      "qFieldLabels": [
+        "App Description Attribute"
+      ],
+      "title": "App Description Attribute",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The attribute fetched from the app''s description, if any. Such as {v1.0.0}.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.02083667581566173",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App Description Attribute",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "GuckHCX",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantHasAllChildAppsConfigured"
+      ],
+      "qFieldLabels": [
+        "Tenant Has All Child Apps Configured"
+      ],
+      "title": "Tenant Has All Child Apps Configured",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The child tenant has all of the source monitoring apps configured (determined by whether QVDs have been generated for each), including the ''App Analyzer'', ''Entitlement Analyzer'', ''Reload Analyzer'', and optionally, the ''Console Settings Collector''.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.25351219681612713",
+        "hasValueColors": false,
+        "colorMapRef": "GuckHCX"
+      }
+    },
+    "qMetaDef": {
+      "title": "Tenant Has All Child Apps Configured",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "HsWDUkU",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppTag"
+      ],
+      "qFieldLabels": [
+        "App Tag"
+      ],
+      "title": "App Tag",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the tag associated with an app.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.679080908185832",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App Tag",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ABPnKN",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ODAGEnabled"
+      ],
+      "qFieldLabels": [
+        "ODAG Enabled"
+      ],
+      "title": "ODAG Enabled",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Whether or not the tenant has On-Demand App Generation (ODAG) enabled.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.23613314328175417",
+        "hasValueColors": false,
+        "colorMapRef": "ABPnKN"
+      }
+    },
+    "qMetaDef": {
+      "title": "ODAG Enabled",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "KmdfjJP",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantCreatedDate"
+      ],
+      "qFieldLabels": [
+        "Tenant Created Date"
+      ],
+      "title": "Tenant Created Date",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The date on which the tenant was created.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.672416064399713",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Tenant Created Date",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "rGGS",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStartMonth"
+      ],
+      "qFieldLabels": [
+        "Reload Start Month"
+      ],
+      "title": "Reload Start Month",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The month that the reload was started within.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5895475285317835",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Start Month",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "NHBmdT",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SessionUsageTimeframe"
+      ],
+      "qFieldLabels": [
+        "Session Usage Timeframe"
+      ],
+      "title": "Session Usage Timeframe",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Varying timeframes for sessions, such as ''Last 30 Days'', ''Last 60 Days'', etc.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.7349661614410978",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Session Usage Timeframe",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "WUpWhWP",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadTimeframe"
+      ],
+      "qFieldLabels": [
+        "Reload Timeframe"
+      ],
+      "title": "Reload Timeframe",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Varying timeframes for reloads, such as ''Last 30 Days'', ''Last 60 Days'', etc.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.28721828525224846",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Timeframe",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "FAqPBv",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "UserName"
+      ],
+      "qFieldLabels": [
+        "User Name"
+      ],
+      "title": "User Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the user from the \"EntitlementAssignments\" table. There are other qualified fields such as \"ReloadUserName\". This field should traverse the entire model.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5963998395403323",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "User Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "YWjxR",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "UserIDMaster"
+      ],
+      "qFieldLabels": [
+        "User ID"
+      ],
+      "title": "User ID",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The ID of the user from the \"EntitlementAssignment\" table. There are other qualified UserIDs, such as \"ReloadUserID\". This ID should traverse the entire model.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.4808205655008695",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "User ID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "QxcWrL",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SessionUsageMonthText"
+      ],
+      "qFieldLabels": [
+        "Session Usage Month"
+      ],
+      "title": "Session Usage Month",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The text representation of the month for which there was usage.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.17135299076620836",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Session Usage Month",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "Wmx",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "OverviewAllotmentMonth"
+      ],
+      "qFieldLabels": [
+        "Overview Allotment Month"
+      ],
+      "title": "Overview Allotment Month",
+      "coloring": {
+        "changeHash": "0.42069625786760634",
+        "hasValueColors": false,
+        "colorMapRef": "Wmx"
+      }
+    },
+    "qMetaDef": {
+      "title": "Overview Allotment Month",
+      "description": "'The month of the license overview.'",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "jBvWdf",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SourceAppIsStale"
+      ],
+      "qFieldLabels": [
+        "Source App Is Stale"
+      ],
+      "title": "Source App Is Stale",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Whether the source app (data) for this app is stale or not, as determined by the user-defined variable \"vDataStaleAsOfHoursAgo\" which is set in the load script of this app. ' \u0026 \r\n'This time is calculated from the difference between the beginning of this app''s reload and the beginning of the source app''s reload. ' \u0026\n'Currently, the value is set to: ''' \u0026 $(vDataStaleAsOfHoursAgo) \u0026 '''.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8359635349644383",
+        "hasValueColors": false,
+        "colorMapRef": "jBvWdf"
+      }
+    },
+    "qMetaDef": {
+      "title": "Source App Is Stale",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "9bb1b570-76e3-49d8-9012-171415591b23",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ParentQVDIsStale"
+      ],
+      "qFieldLabels": [
+        "Parent QVD Is Stale"
+      ],
+      "title": "Parent QVD Is Stale",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Whether the parent QVD for this app is stale or not, as determined by the user-defined variable \"vDataStaleAsOfHoursAgo\" which is set in the load script of this app. ' \u0026 \r\n'This time is calculated from the difference between the beginning of this app''s reload and the time of the generated QVD. ' \u0026\n'Currently, the value is set to: ''' \u0026 $(vDataStaleAsOfHoursAgo) \u0026 '''.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.9896237177013221",
+        "hasValueColors": false,
+        "colorMapRef": "9bb1b570-76e3-49d8-9012-171415591b23"
+      }
+    },
+    "qMetaDef": {
+      "title": "Parent QVD Is Stale",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "vEvSKJr",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ParentQVDDataAge"
+      ],
+      "qFieldLabels": [
+        "Parent QVD Data Age"
+      ],
+      "title": "Parent QVD Data Age",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The time since this app began last reloading and the time the parent app wrote the QVD.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.6401654104898646",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Parent QVD Data Age",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "VcBQAT",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SourceAppDataAge"
+      ],
+      "qFieldLabels": [
+        "Source App Data Age"
+      ],
+      "title": "Source App Data Age",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The time since this app began last reloading and the time the source app began reloading.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5209694243654881",
+        "hasValueColors": false,
+        "colorMapRef": "VcBQAT"
+      }
+    },
+    "qMetaDef": {
+      "title": "Source App Data Age",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "SPVpKA",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppTableNoOfRowsOverThreshold"
+      ],
+      "qFieldLabels": [
+        "App Record Count Over Threshold"
+      ],
+      "qLabelExpression": "='Over Threshold'",
+      "title": "App Record Count Over Threshold",
+      "coloring": {
+        "changeHash": "0.7721344178206102",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App Record Count Over Threshold",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "SjmjFzc",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=[AppContainsCircularReference(s)]"
+      ],
+      "qFieldLabels": [
+        "App Contains Circular Reference(s)"
+      ],
+      "qLabelExpression": "='Circular References'",
+      "title": "App Contains Circular Reference(s)",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Whether the app contains circular references or not.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.7015204747838879",
+        "hasValueColors": false,
+        "colorMapRef": "SjmjFzc"
+      }
+    },
+    "qMetaDef": {
+      "title": "App Contains Circular Reference(s)",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "b1c9e43f-89ad-4190-9cde-d49281470ab1",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppContainsSyntheticKeys"
+      ],
+      "qFieldLabels": [
+        "App Contains Synthetic Keys"
+      ],
+      "qLabelExpression": "='Synthetic Keys'",
+      "title": "App Contains Synthetic Keys",
+      "coloring": {
+        "colorMapRef": "b1c9e43f-89ad-4190-9cde-d49281470ab1",
+        "changeHash": "0.4554783893263028",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App Contains Synthetic Keys",
+      "description": "Indicates if an app's data model contains one or more synthetic keys.\nA synthetic key is created when two or more fields are found in two or more tables within an app data model.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "dWBFw",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppContainsDataIsland(s)"
+      ],
+      "qFieldLabels": [
+        "App Contains Data Island(s)"
+      ],
+      "qLabelExpression": "='Data Island(s)'",
+      "title": "App Contains Data Island(s)",
+      "coloring": {
+        "changeHash": "0.410504818981549",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App Contains Data Island(s)",
+      "description": "Indicates if an app contains one or more island tables in the data model.\nAn island table is one which does not share any common field with another table and, therefore, is not associated with other data tables.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "PemPMNy",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppPeakRAMOverThreshold"
+      ],
+      "qFieldLabels": [
+        "App Peak RAM Over Threshold"
+      ],
+      "qLabelExpression": "='Over Threshold'",
+      "title": "App Peak RAM Over Threshold",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Indicates if an app requires more memory for a reload (in RAM) than the threshold of ' \u0026 \r\nIf(GetPossibleCount(AppRAMPeakReloadSizeThreshold)\u003c\u003e1,'\u003cVaries Across Tenants\u003e',num(AppRAMPeakReloadSizeThreshold/1024/1024, '#,##0 MB'))"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.027521818965470235",
+        "hasValueColors": false,
+        "colorMapRef": "PemPMNy"
+      }
+    },
+    "qMetaDef": {
+      "title": "App Peak RAM Over Threshold",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "Lypjhu",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppRAMOverThreshold"
+      ],
+      "qFieldLabels": [
+        "App RAM Over Threshold"
+      ],
+      "qLabelExpression": "='Over Threshold'",
+      "title": "App RAM Over Threshold",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Indicates if an app fills a larger initial memory footprint (in RAM) than the threshold of ' \u0026 \nIf(GetPossibleCount(AppRAMSizeThreshold)\u003c\u003e1,'\u003cVaries Across Tenants\u003e',num(AppRAMSizeThreshold/1024/1024, '#,##0 MB'))"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.4113667422002565",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App RAM Over Threshold",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "UG",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppOwnerName"
+      ],
+      "qFieldLabels": [
+        "App Owner Name"
+      ],
+      "title": "App Owner Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the owner of the app.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.6604515404998152",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App Owner Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JQxKJb",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=If(Len($(vPersonalUserField))\u003e0,$(vPersonalUserField),Null())"
+      ],
+      "qFieldLabels": [
+        "Reload User"
+      ],
+      "title": "Reload User",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'This field can be dynamically configured to use \"ReloadUserID\", \"ReloadUserSubject\", \"ReloadUserName\", or \"ReloadUserEmail\". It is currently set to \"' \u0026 '$(vPersonalUserField)' \u0026 '\".'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.3583058116784026",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload User",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "QjLPPh",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadTaskRecurrenceRate"
+      ],
+      "qFieldLabels": [
+        "Reload Task Recurrence Rate"
+      ],
+      "title": "Reload Task Recurrence Rate",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The rate of the task, such as ''Daily'' or ''Hourly''.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8167524570893439",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Task Recurrence Rate",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "PaenMW",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadConnectionType"
+      ],
+      "qFieldLabels": [
+        "Load / Store"
+      ],
+      "title": "Load / Store",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Whether the file was ''loaded'' or ''stored'' as part of the reload.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8484740628789937",
+        "hasValueColors": false,
+        "colorMapRef": "PaenMW"
+      }
+    },
+    "qMetaDef": {
+      "title": "Load / Store",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "UTTWtn",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadConnectionStorageProvider"
+      ],
+      "qFieldLabels": [
+        "Data Connection Package"
+      ],
+      "title": "Data Connection Package",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The internal driver package of the data connection.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.9400407782193905",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Package",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "UZtzupK",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "FileType"
+      ],
+      "qFieldLabels": [
+        "File Type"
+      ],
+      "title": "File Type",
+      "coloring": {
+        "changeHash": "0.8591975802592315",
+        "hasValueColors": false,
+        "colorMapRef": "UZtzupK"
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The type (file extension) of the file that was used in the reload of an app (either loaded or stored).'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "File Type",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JbnxjjA",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "FileName"
+      ],
+      "qFieldLabels": [
+        "File Name"
+      ],
+      "title": "File Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the file that was used in the reload of an app (either loaded or stored). Note that the file name is floor()''d (all lowercase.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.18009015009441653",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "File Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "PNFgPL",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionSpaceType"
+      ],
+      "qFieldLabels": [
+        "Data Connection Space Type"
+      ],
+      "title": "Data Connection Space Type",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The type of the space that houses the data connection.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8328115857797713",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Space Type",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JXLRa",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=AppName"
+      ],
+      "qFieldLabels": [
+        "App Name"
+      ],
+      "title": "App Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the app (not distinct).'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5625954144173686",
+        "hasValueColors": false,
+        "colorMapRef": "JXLRa"
+      }
+    },
+    "qMetaDef": {
+      "title": "App Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "mhcJfZ",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppNameUnique"
+      ],
+      "qFieldLabels": [
+        "App Name Unique"
+      ],
+      "title": "App Name Unique",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'A dual''d representation of the AppName field, where an AutoNumber() of the AppID is performed as the numeric value. This makes each pointer unique to the ID of the app.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.3828760363207111",
+        "hasValueColors": false,
+        "colorMapRef": "mhcJfZ"
+      }
+    },
+    "qMetaDef": {
+      "title": "App Name Unique",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "pXpkfxB",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionSpaceName"
+      ],
+      "qFieldLabels": [
+        "Data Connection Space Name"
+      ],
+      "title": "Data Connection Space Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the space that houses the data connection.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.9269453146434803",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Space Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "62237200-83c2-493c-aa0f-3b628241566b",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionTenantID"
+      ],
+      "qFieldLabels": [
+        "Data Connection Tenant ID"
+      ],
+      "title": "Data Connection Tenant ID",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The ID of the tenant that the data connection resides in.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "WyXE",
+        "changeHash": "0.6729337915694384",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Tenant ID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "WyXE",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionTenantName"
+      ],
+      "qFieldLabels": [
+        "Data Connection Tenant Name"
+      ],
+      "title": "Data Connection Tenant Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the tenant that the data connection resides in.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.6162637942586882",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Tenant Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "CQZJvPp",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionType"
+      ],
+      "qFieldLabels": [
+        "Data Connection Type"
+      ],
+      "title": "Data Connection Type",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The type of data connection (internal naming).'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.6299368197325079",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Type",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "AXduV",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionOwner"
+      ],
+      "qFieldLabels": [
+        "Data Connection Owner"
+      ],
+      "title": "Data Connection Owner",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The owner of the data connection.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.9595367356066744",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Owner",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "rreAhLs",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionName"
+      ],
+      "qFieldLabels": [
+        "Data Connection Name"
+      ],
+      "title": "Data Connection Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the data connection.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.9603773362053296",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "psQjDK",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "DataConnectionNameUnique"
+      ],
+      "qFieldLabels": [
+        "Data Connection Name Unique"
+      ],
+      "title": "Data Connection Name Unique",
+      "coloring": {
+        "changeHash": "0.3395636663779549",
+        "hasValueColors": false,
+        "colorMapRef": "psQjDK"
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'A dual''d representation of the DataConnectionName field, where an AutoNumber() of the DataConnectionID is performed as the numeric value. This makes each pointer unique to the ID of the data connection.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Data Connection Name Unique",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "74318639-2326-49c4-ab16-d2e66fef705d",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadDataConnectionSpaceType"
+      ],
+      "qFieldLabels": [
+        "Reload Data Connection Space Type"
+      ],
+      "title": "Reload Data Connection Space Type",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The type of space that houses the data connection that the app used during it''s most recent reload.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "mHWgEU",
+        "changeHash": "0.6956719828265252",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Data Connection Space Type",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "0e5b7e91-c4fb-4f99-969d-dfa768955b87",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadDataConnectionName"
+      ],
+      "qFieldLabels": [
+        "Reload Data Connection Name"
+      ],
+      "title": "Reload Data Connection Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the data connection that the app used during it''s most recent reload.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "mHWgEU",
+        "changeHash": "0.1303328239870709",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Data Connection Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "mHWgEU",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadDataConnectionSpaceName"
+      ],
+      "qFieldLabels": [
+        "Reload Data Connection Space Name"
+      ],
+      "title": "Reload Data Connection Space Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the space that houses the data connection that the app used during it''s most recent reload.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5494524576095747",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Data Connection Space Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "eZnzYtr",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadErrorDescription"
+      ],
+      "qFieldLabels": [
+        "Reload Error Description"
+      ],
+      "title": "Reload Error Description",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'A brief description of the reload error.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.07255997945711434",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Error Description",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "auLNVsT",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadDuration"
+      ],
+      "qFieldLabels": [
+        "Reload Duration"
+      ],
+      "title": "Reload Duration",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The duration of the reload.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5673509890807595",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Duration",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "7ed21467-a60d-43f4-9482-3ebd4d475a05",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadEndTime"
+      ],
+      "qFieldLabels": [
+        "Reload End Time"
+      ],
+      "title": "Reload End Time",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The end time of the reload.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "HCZfUUh",
+        "changeHash": "0.7225769005542249",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload End Time",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "HCZfUUh",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStartTime"
+      ],
+      "qFieldLabels": [
+        "Reload Start Time"
+      ],
+      "title": "Reload Start Time",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The start time of the reload.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.3395302617797562",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Start Time",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ajeWPjE",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadID"
+      ],
+      "qFieldLabels": [
+        "Reload ID"
+      ],
+      "title": "Reload ID",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The ID of the reload job.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8605886998823564",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload ID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "ZrsxbMB",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadTaskID"
+      ],
+      "qFieldLabels": [
+        "Reload Task ID"
+      ],
+      "title": "Reload Task ID",
+      "coloring": {
+        "changeHash": "0.36455801818714284",
+        "hasValueColors": false,
+        "colorMapRef": "ZrsxbMB"
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Task ID",
+      "description": "'The ID of the reload task.'",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "RPdMPm",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadTaskState"
+      ],
+      "qFieldLabels": [
+        "Reload Task State"
+      ],
+      "title": "Reload Task State",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The state of the reload task. Can be either ''Enabled'' or ''Disabled''."
+        }
+      },
+      "coloring": {
+        "changeHash": "0.984994160658339",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Task State",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "CwJd",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SpaceName"
+      ],
+      "qFieldLabels": [
+        "App Space Name"
+      ],
+      "title": "App Space Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The name of the space that the app resides in.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8825597773782992",
+        "hasValueColors": false,
+        "colorMapRef": "CwJd"
+      }
+    },
+    "qMetaDef": {
+      "title": "App Space Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "AAxUVM",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadError"
+      ],
+      "qFieldLabels": [
+        "Reload Error"
+      ],
+      "title": "Reload Error",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The reload error category.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.4614236470747062",
+        "hasValueColors": false,
+        "colorMapRef": "AAxUVM"
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Error",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "jFjBGfF",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStartHour"
+      ],
+      "qFieldLabels": [
+        "Reload Start Hour"
+      ],
+      "title": "Reload Start Hour",
+      "coloring": {
+        "changeHash": "0.7564573658729183",
+        "hasValueColors": false,
+        "colorMapRef": "jFjBGfF"
+      },
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The hour of the day that the reload was started.'"
+        }
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Start Hour",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "03f0a653-b4df-4235-8248-5c81e4c4788d",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStartWeekDay"
+      ],
+      "qFieldLabels": [
+        "Reload Start Week Day"
+      ],
+      "title": "Reload Start Week Day",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The day of the week that the reload was started.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "aLGQDR",
+        "changeHash": "0.11211563014941217",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Start Week Day",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "aLGQDR",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStartWeek"
+      ],
+      "qFieldLabels": [
+        "Reload Start Week"
+      ],
+      "title": "Reload Start Week",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The week that the reload was started.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.5611528982704825",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Start Week",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JNUHEH",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AppID"
+      ],
+      "qFieldLabels": [
+        "App ID"
+      ],
+      "title": "App ID",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The ID of the app.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8263695811523979",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "App ID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "Kpjug",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SpaceType"
+      ],
+      "qFieldLabels": [
+        "App Space Type"
+      ],
+      "title": "App Space Type",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The type of the space that the app resides in. One of: ''Personal'', ''Shared'', or ''Managed''.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.8909462605842444",
+        "hasValueColors": false,
+        "colorMapRef": "Kpjug"
+      }
+    },
+    "qMetaDef": {
+      "title": "App Space Type",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "KH",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "ReloadStatus"
+      ],
+      "qFieldLabels": [
+        "Reload Status"
+      ],
+      "title": "Reload Status",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The status of a reload, either ''SUCCEEDED'' or ''FAILED''.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.08311522433189067",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Status",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "XVmGL",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "=Pick(Match(ReloadType,'chronos','hub','external','in app','automations'),'Scheduled','Hub','API','In App','Automation')"
+      ],
+      "qFieldLabels": [
+        "Reload Type"
+      ],
+      "title": "Reload Type",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'Friendly names for the different reload types.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.3264550555213468",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Reload Type",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "kPeUb",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SourceAppLastReloadStartTime"
+      ],
+      "qFieldLabels": [
+        "Source App Last Reload Start Time"
+      ],
+      "title": "Source App Last Reload Start Time",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The start time of the source app. This allows us to track how fresh the data is for each area within each tenant.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.17607936156112514",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Source App Last Reload Start Time",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "d400d22c-8973-48c3-9387-ea902cf0b00a",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantName"
+      ],
+      "qFieldLabels": [
+        "Tenant Name"
+      ],
+      "title": "Tenant Name",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The Name of the tenant.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "JHrJLj",
+        "changeHash": "0.13713369159534183",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Tenant Name",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "6d0bd421-689b-43a1-86ea-38a4db327a8b",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "TenantID"
+      ],
+      "qFieldLabels": [
+        "Tenant ID"
+      ],
+      "title": "Tenant ID",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The ID of the tenant.'"
+        }
+      },
+      "coloring": {
+        "colorMapRef": "JHrJLj",
+        "changeHash": "0.35743868458447126",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Tenant ID",
+      "description": "",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
+      "qId": "JHrJLj",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "SourceApp"
+      ],
+      "qFieldLabels": [
+        "Source App"
+      ],
+      "title": "Source App",
+      "descriptionExpression": {
+        "qStringExpression": {
+          "qExpr": "'The source application that provides data to this dashboard.'"
+        }
+      },
+      "coloring": {
+        "changeHash": "0.6025223348039574",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Source App",
+      "description": "",
+      "tags": []
+    }
+  }
+]
