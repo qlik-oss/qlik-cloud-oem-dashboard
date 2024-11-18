@@ -110,8 +110,8 @@ LET vNow						= Now(1);
 //=========
 
 //=========
-// Peak Reload RAM in the standard tier is currently 15 GB
-SET vAppRAMPeakReloadSizeQuota 	= 16106127360;
+// Peak Reload RAM in the standard tier is currently 34 GiB
+SET vAppRAMPeakReloadSizeQuota 	= 36507222016;
 //=========
 
 //=========
