@@ -36,7 +36,6 @@ SET vu_is_parent_app 					= 0;					// If this application is to be the parent ap
 // **Azure Blob, AWS S3, and Google CLoud Storage have been tested and confirmed to work without any modifications**
 SET vu_qlik_meta_collection_parent_dir = 'lib://:';				// Parent directory of the "QlikMetaCollection" folder (trailing slash optional)
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ///$tab Check Version
 SUB check_version
@@ -126,7 +125,8 @@ SUB get_tenants
     [Hostnames]:
     LOAD	
         [@Value] AS TenantHostname,
-        '$(vTenantID)' AS TenantID
+        '$(vTenantID)' AS TenantID,
+        IF(RecNo()=1,'Hostname','Alias') AS HostnameType	// First record is always the hostname in REST response
     RESIDENT RestConnectorMasterTable
     WHERE NOT IsNull([__FK_hostnames]);
 
@@ -288,7 +288,7 @@ SUB get_groups
         "__KEY_root"
     FROM JSON (wrap on) "root" PK "__KEY_root"
     WITH CONNECTION (  
-      URL "https://$(vu_tenant_fqdn)/api/v1/qlik-groups/configs/$(vTenantID)"
+      URL "https://$(vu_tenant_fqdn)/api/v1/groups/settings"
     );
 
     [Groups]:
@@ -482,20 +482,21 @@ SUB get_smtp
     RestConnectorMasterTable:
     SQL SELECT 
         "_id",
-        "server_address",
-        "server_port",
-        "security_type",
-        "email_address",
+        "serverAddress" AS "server_address",
+        "serverPort" AS "server_port",
+        "securityType" AS "security_type",
+        "emailAddress" AS "email_address",
         "modificationTime",
         "isValid",
         "authFailures",
         "username",
-        "password_exists",
+        "passwordExists" AS "password_exists",
         "__KEY_root"
     FROM JSON (wrap on) "root" PK "__KEY_root"
     WITH CONNECTION (  
-      URL "https://$(vu_tenant_fqdn)/api/v1/transport/smtp-config"
+      URL "https://$(vu_tenant_fqdn)/api/v1/transports/email-config"
     );
+
 
     [SMTP]:
     LEFT JOIN(Tenants)
@@ -630,7 +631,7 @@ SET comp=;
 Let vTenants = 0;
 
 SET app_name		= 'Console Settings Collector';
-SET app_version		= '2.1.0';
+SET app_version		= '2.2.0';
 LET comp 			= ComputerName(); 
 LET engine_ver 		= PurgeChar(EngineVersion(),Chr(39)); 
 LET start_msg 		= 'Reloading $(app_name) $(app_version) from $(comp) running QIX Engine version $(engine_ver)';
