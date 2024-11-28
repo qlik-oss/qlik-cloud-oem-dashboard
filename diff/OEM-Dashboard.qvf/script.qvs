@@ -155,6 +155,138 @@ LET vu_qlik_meta_collection_parent_dir = If(Right('$(vu_qlik_meta_collection_par
 TRACE -------------;
 TRACE Finished Variables.;
 TRACE -------------;
+///$tab Section
+IF $(vConsoleSettingsCollector)=0 THEN
+
+	TRACE -------------;
+    TRACE Loading Console Settings Collector data...;
+    TRACE If you are experiencing issues with loading this data, you can toggle off the vConsoleSettingsCollector variable.;
+    TRACE -------------;
+
+    SourceAppLastReloadTIme:
+    LOAD
+        TenantID,
+        'Console Settings Collector' AS SourceApp,
+        Timestamp(LastReloadStartTime) AS SourceAppLastReloadStartTime,
+        Interval('$(vNow)'-Timestamp(LastReloadStartTime),'D hh@mm#') AS SourceAppDataAge,
+        If(Timestamp(LastReloadStartTime)<=Timestamp('$(vNow)' - $(vDataStaleAsOfHoursAgo)/24),1,0) AS SourceAppIsStale
+    FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Tenants.qvd]
+    (qvd);
+
+    Tenants:
+    LOAD
+        *
+    //     TenantID,
+    // DROP     TenantName,
+    // DROP     TenantCreatedByUser,
+    // DROP     TenantDataCenter,
+    // DROP     TenantCreated,
+    // DROP     TenantLastUpdated,
+    // DROP     TenantStatus,
+    // DROP		LastReloadStartTime,
+    //     AutoAssignCreateSharedSpacesRoleToProfessionalsEnabled,
+    //     AnalyticCreationEnabled,
+    //     DynamicViewEnabled,
+    //     ODAGEnabled,
+    //     AlertsFeatureOperationStatus,
+    //     AlertsFeatureOperationStatusChange,
+    //     AlertsLicenseStatus,
+    //     AlertsConsumed,
+    //     AlertsLimits,
+    //     AlertsEnabled,
+    //     AlertsMaxRecipientsInTargetAccess,
+    //     MLEndpointsID,
+    //     MLEndpointsEnabled,
+    //     NotesEnabled,
+    //     NotesLastFetched,
+    //     NotesReason,
+    //     GroupCreationEnabled,
+    //     GroupSyncIdPGroupsEnabled,
+    //     LineageEnabled,
+    //     LineageUIEnabled,
+    //     ImpactAnalysisEnabled,
+    //     EntitlementProfessionalAutoEnabled,
+    //     EntitlementAnalyzerAutoEnabled,
+    //     UsageMetricsEnabled,
+    //     APIKeysEnabled,
+    //     APIKeyMaxExpiry,
+    //     APIKeyMaxPerUser,
+    //     APIKeySCIMExternalClientExpiry,
+    //     SharingReportSubscriptionEnabled,
+    //     SharingEnabled,
+    //     SharingMaxRecipients,
+    //     SharingMaxSubscriptionRecipients,
+    //     SharingSubscriptionStatus,
+    //     SHaringSubscriptionStatusChangeTime,
+    //     OfflineEnabled,
+    //     SharesEnabled,
+    //     SMTPID,
+    //     SMTPServerAddress,
+    //     SMTPServerPort,
+    //     SMTPSecurityType,
+    //     SMTPEmailAddress,
+    //     SMTPModificationTime,
+    //     SMTPIsValid,
+    //     SMTPAuthFailures,
+    //     SMTPUserName,
+    //     SMTPPasswordExists
+    FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Tenants.qvd]
+    (qvd);
+
+    DROP FIELDS	
+                TenantName
+                ,TenantCreatedByUser
+                ,TenantDataCenter
+                ,TenantCreated
+                ,TenantLastUpdated
+                ,TenantStatus
+                ,LastReloadStartTime
+        FROM Tenants;
+
+    Temp_Hostnames:
+    LOAD
+        *
+    //     TenantHostname,
+    //     TenantID
+    FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Hostnames.qvd]
+    (qvd);
+
+    // Add backwards compatible logic to remove Alias hostnames. Not a smart check, but a check none-the-less.
+    IF(NoOfFields('Temp_Hostnames') = 3) THEN
+    
+    	TRACE >> CSC is likely loading HostnameType, dropping Aliases until supported in OEM Dashboard.;
+        
+        Hostnames:
+        NoConcatenate
+        LOAD
+        	TenantHostname,
+            TenantID
+        RESIDENT Temp_Hostnames
+        WHERE HostnameType = 'Hostname';
+        
+        DROP TABLE Temp_Hostnames;
+        
+    ELSE
+    
+    	TRACE >> CSC is not providing HostnameType, no processing needed.;
+        
+        RENAME TABLE Temp_Hostnames TO Hostnames;
+        
+    END IF
+    
+	TRACE -------------;
+    TRACE Finished loading Console Settings Collector data.;
+    TRACE -------------;
+
+ELSE
+
+	TRACE -------------;
+    TRACE The Console Settings Collector data will not be loaded. To load this data, you can enable the vConsoleSettingsCollector variable.;
+    TRACE -------------;
+    
+END If
+
+exit script;
 ///$tab Entitlement Analyzer
 //===========
 // All tables will load * and then drop any unnecessary fields
