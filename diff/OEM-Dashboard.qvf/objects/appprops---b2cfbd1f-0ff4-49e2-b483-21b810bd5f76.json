@@ -15,7 +15,7 @@
   "sheetTitleColor": "#4B4B4B",
   "sheetLogoThumbnail": {
     "qStaticContentUrlDef": {
-      "qUrl": "/api/v1/apps/<appId>/media/files/Qlik-Logo_TAG.png"
+      "qUrl": "/api/v1/apps/<appId>/media/files/qlik_logo_apps.png"
     }
   },
   "sheetLogoPosition": "",
