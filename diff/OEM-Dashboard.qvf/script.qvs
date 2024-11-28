@@ -788,13 +788,36 @@ IF $(vConsoleSettingsCollector)=1 THEN
                 ,LastReloadStartTime
         FROM Tenants;
 
-    Hostnames:
+    Temp_Hostnames:
     LOAD
         *
     //     TenantHostname,
     //     TenantID
     FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Hostnames.qvd]
     (qvd);
+
+    // Add backwards compatible logic to remove Alias hostnames. Not a smart check, but a check none-the-less.
+    IF(NoOfFields('Temp_Hostnames') = 3) THEN
+    
+    	TRACE >> CSC is likely loading HostnameType, dropping Aliases until supported in OEM Dashboard.;
+        
+        Hostnames:
+        NoConcatenate
+        LOAD
+        	TenantHostname,
+            TenantID
+        RESIDENT Temp_Hostnames
+        WHERE HostnameType = 'Hostname';
+        
+        DROP TABLE Temp_Hostnames;
+        
+    ELSE
+    
+    	TRACE >> CSC is not providing HostnameType, no processing needed.;
+        
+        RENAME TABLE Temp_Hostnames TO Hostnames;
+        
+    END IF
     
 	TRACE -------------;
     TRACE Finished loading Console Settings Collector data.;
