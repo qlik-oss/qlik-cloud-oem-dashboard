@@ -1,18 +1,92 @@
 [
   {
     "qInfo": {
-      "qId": "a6c7bca4-b7c3-47ba-8572-84e708c0feb9",
+      "qId": "e726c53e-34e0-49f4-997b-50a2effc40a9",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vUsingEndpoints",
+    "qName": "vMaxOverageUsedByTenant",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "=Count({1\u003cDataConnectionName={'[Unknown Endpoints Connection]'}\u003e}DISTINCT AppID)\u003e=1",
+    "qDefinition": "=Max(Aggr([# Overage Used (CM Summed by Tenant)],TenantID))",
     "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "32303804-4fab-496c-ac95-5b83a54bcce4",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxAssignedAnalyzerUsersGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=[# Analyzer Assigned (CM)]",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "a2fec545-7f37-4b2f-a538-2f44eb19be64",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vCapacitySVGPadPxGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxUsedCapacityGlobal))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "f333aba4-3619-495b-ae86-815b9c27aacf",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAppsUsingExpression",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=If(\r\n\t$(vUsingEndpoints),\n    'Count({\u003cDataConnectionType-={' \u0026 chr(39) \u0026 'qix-datafiles.exe' \u0026 chr(39) \u0026 '}\u003e}DISTINCT AppID)',\n    'Count({\u003cDataConnectionType-={' \u0026 chr(39) \u0026 'qix-datafiles.exe' \u0026 chr(39) \u0026 '},DataConnectionName-={' \u0026 chr(39) \u0026 '[Unknown Endpoints Connection]' \u0026 chr(39) \u0026 '}\u003e}DISTINCT AppID)'\n)",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "ff34f925-10d4-4319-b4c5-4a4077c21b7b",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vAnalyzerSVGPadPxGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxAssignedAnalyzerUsersGlobal))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "4fa0c524-2cc7-4f8a-af86-8195db5d3547",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFieldValueCountThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "10000000"
   },
   {
     "qInfo": {
@@ -61,6 +135,21 @@
   },
   {
     "qInfo": {
+      "qId": "0a522390-ed4e-48d4-b767-b3a5e543d618",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vProSVGPadPxGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxAssignedProUsersGlobal))*6",
+    "tags": []
+  },
+  {
+    "qInfo": {
       "qId": "97df8a2d-73f1-46b1-9c86-dc6a9c672b92",
       "qType": "variable"
     },
@@ -75,48 +164,89 @@
   },
   {
     "qInfo": {
-      "qId": "32303804-4fab-496c-ac95-5b83a54bcce4",
+      "qId": "b960823e-865f-45a0-b252-13a040cbad3e",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vMaxAssignedAnalyzerUsersGlobal",
+    "qName": "vNoOfFields",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "=[# Analyzer Assigned (CM)]",
+    "qDefinition": "150"
+  },
+  {
+    "qInfo": {
+      "qId": "a6c7bca4-b7c3-47ba-8572-84e708c0feb9",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vUsingEndpoints",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Count({1\u003cDataConnectionName={'[Unknown Endpoints Connection]'}\u003e}DISTINCT AppID)\u003e=1",
     "tags": []
   },
   {
     "qInfo": {
-      "qId": "ff34f925-10d4-4319-b4c5-4a4077c21b7b",
+      "qId": "4f96af9a-c42a-4ec5-8a89-8886c298b200",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vAnalyzerSVGPadPxGlobal",
+    "qName": "vMaxOverageUsed",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "=Len($(vMaxAssignedAnalyzerUsersGlobal))*6",
+    "qDefinition": "=[# Overage Used (CM Summed Global)]",
     "tags": []
   },
   {
     "qInfo": {
-      "qId": "0ca0f11f-2c87-42a4-95cc-d818a6047769",
+      "qId": "7d6316d7-88e7-4cbf-90bc-430ba84b35a7",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vProSVGPadPx",
+    "qName": "vReloadCPUTimeThreshold",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "=Len($(vMaxAssignedProUsers))*6 ",
-    "tags": []
+    "qDefinition": "1800000"
+  },
+  {
+    "qInfo": {
+      "qId": "cc738f46-17c1-44b1-a41b-aca1acd4dc00",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFieldCardinalityThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "1000000"
+  },
+  {
+    "qInfo": {
+      "qId": "5ec9f4b9-92ca-4f82-8481-dbbbbcef20d9",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vSourceDataStaleAsOfHoursAgo",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "24"
   },
   {
     "qInfo": {
@@ -135,51 +265,6 @@
   },
   {
     "qInfo": {
-      "qId": "be111875-72f1-415e-b936-b54f2a46b35c",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vMaxAssignedProUsersGlobal",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=[# Professional Assigned (CM)]",
-    "tags": []
-  },
-  {
-    "qInfo": {
-      "qId": "0a522390-ed4e-48d4-b767-b3a5e543d618",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vProSVGPadPxGlobal",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=Len($(vMaxAssignedProUsersGlobal))*6",
-    "tags": []
-  },
-  {
-    "qInfo": {
-      "qId": "f333aba4-3619-495b-ae86-815b9c27aacf",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vAppsUsingExpression",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=If(\r\n\t$(vUsingEndpoints),\n    'Count({\u003cDataConnectionType-={' \u0026 chr(39) \u0026 'qix-datafiles.exe' \u0026 chr(39) \u0026 '}\u003e}DISTINCT AppID)',\n    'Count({\u003cDataConnectionType-={' \u0026 chr(39) \u0026 'qix-datafiles.exe' \u0026 chr(39) \u0026 '},DataConnectionName-={' \u0026 chr(39) \u0026 '[Unknown Endpoints Connection]' \u0026 chr(39) \u0026 '}\u003e}DISTINCT AppID)'\n)",
-    "tags": []
-  },
-  {
-    "qInfo": {
       "qId": "e6941887-d87d-47db-9220-a28b9338ebf4",
       "qType": "variable"
     },
@@ -191,136 +276,6 @@
       "qUseThou": 0
     },
     "qDefinition": ".8"
-  },
-  {
-    "qInfo": {
-      "qId": "4fa0c524-2cc7-4f8a-af86-8195db5d3547",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vFieldValueCountThreshold",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "10000000"
-  },
-  {
-    "qInfo": {
-      "qId": "0aba4f55-1fb6-40f1-a5a4-def10011ce5c",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vMaxUsedCapacity",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=Max(Aggr([# Capacity Used (CM Summed)],TenantID))",
-    "tags": []
-  },
-  {
-    "qInfo": {
-      "qId": "40d49221-03f3-47bc-8f69-d9d2790df75a",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vAppRAMToQuotaPercentThreshold",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": ".8"
-  },
-  {
-    "qInfo": {
-      "qId": "7d6316d7-88e7-4cbf-90bc-430ba84b35a7",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vReloadCPUTimeThreshold",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "1800000"
-  },
-  {
-    "qInfo": {
-      "qId": "49e68462-1a9c-4176-993e-388c6f8ddab4",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vMaxUsedCapacityGlobal",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=[# Capacity Used (CM Summed)]",
-    "tags": []
-  },
-  {
-    "qInfo": {
-      "qId": "e726c53e-34e0-49f4-997b-50a2effc40a9",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vMaxOverageUsedByTenant",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=Max(Aggr([# Overage Used (CM Summed by Tenant)],TenantID))",
-    "tags": []
-  },
-  {
-    "qInfo": {
-      "qId": "cc738f46-17c1-44b1-a41b-aca1acd4dc00",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vFieldCardinalityThreshold",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "1000000"
-  },
-  {
-    "qInfo": {
-      "qId": "a347d091-2ebc-4ae5-85cb-6c12bdbae991",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vCapacitySVGPadPx",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=Len($(vMaxUsedCapacity))*6",
-    "tags": []
-  },
-  {
-    "qInfo": {
-      "qId": "5ec9f4b9-92ca-4f82-8481-dbbbbcef20d9",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vSourceDataStaleAsOfHoursAgo",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "24"
   },
   {
     "qInfo": {
@@ -339,90 +294,47 @@
   },
   {
     "qInfo": {
-      "qId": "9d00151f-6847-4296-b3a9-3a3d0939fbda",
+      "qId": "a347d091-2ebc-4ae5-85cb-6c12bdbae991",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vFeaturesExpression",
+    "qName": "vCapacitySVGPadPx",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "If($(vFeaturesValueList)='Alerts',Count({\u003cAlertsEnabled={'True'}\u003e} TenantID),\r\nIf($(vFeaturesValueList)='API Keys',Count({\u003cAPIKeysEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Chart Sharing via Email',Count({\u003cSharingEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Dynamic Views',Count({\u003cDynamicViewEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Groups',Count({\u003cGroupCreationEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Lineage',Count({\u003cLineageEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='ML Endpoints',Count({\u003cMLEndpointsEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Notes',Count({\u003cNotesEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='ODAG',Count({\u003cODAGEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Offline',Count({\u003cOfflineEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Report Subscription',Count({\u003cSharingReportSubscriptionEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Usage Metrics',Count({\u003cUsageMetricsEnabled={'True'}\u003e} TenantID)\n))))))))))))",
+    "qDefinition": "=Len($(vMaxUsedCapacity))*6",
     "tags": []
   },
   {
     "qInfo": {
-      "qId": "a2fec545-7f37-4b2f-a538-2f44eb19be64",
+      "qId": "9b240d28-a119-49d2-9d83-59f7697f41f2",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vCapacitySVGPadPxGlobal",
+    "qName": "vFeaturesValueList",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "=Len($(vMaxUsedCapacityGlobal))*6",
+    "qDefinition": "ValueList('Alerts','API Keys','Chart Sharing via Email','Dynamic Views','Groups','ML Endpoints','Notes','ODAG','Offline','Report Subscription','Usage Metrics')",
     "tags": []
   },
   {
     "qInfo": {
-      "qId": "1b54b352-238b-4bbd-853c-f7237199a745",
+      "qId": "0aba4f55-1fb6-40f1-a5a4-def10011ce5c",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vOverageSVGPadPxByTenant",
+    "qName": "vMaxUsedCapacity",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "=Len($(vMaxOverageUsedByTenant))*6",
-    "tags": []
-  },
-  {
-    "qInfo": {
-      "qId": "239d652b-87df-45d3-be0f-5ab1b059f0d0",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vTableRecordCountThreshold",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "50000000"
-  },
-  {
-    "qInfo": {
-      "qId": "b960823e-865f-45a0-b252-13a040cbad3e",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vNoOfFields",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "150"
-  },
-  {
-    "qInfo": {
-      "qId": "4f96af9a-c42a-4ec5-8a89-8886c298b200",
-      "qType": "variable"
-    },
-    "qMetaDef": {},
-    "qName": "vMaxOverageUsed",
-    "qNumberPresentation": {
-      "qType": "U",
-      "qnDec": 10,
-      "qUseThou": 0
-    },
-    "qDefinition": "=[# Overage Used (CM Summed Global)]",
+    "qDefinition": "=Max(Aggr([# Capacity Used (CM Summed)],TenantID))",
     "tags": []
   },
   {
@@ -456,32 +368,32 @@
   },
   {
     "qInfo": {
-      "qId": "9b240d28-a119-49d2-9d83-59f7697f41f2",
+      "qId": "40d49221-03f3-47bc-8f69-d9d2790df75a",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vFeaturesValueList",
+    "qName": "vAppRAMToQuotaPercentThreshold",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "ValueList('Alerts','API Keys','Chart Sharing via Email','Dynamic Views','Groups','ML Endpoints','Notes','ODAG','Offline','Report Subscription','Usage Metrics')",
-    "tags": []
+    "qDefinition": ".8"
   },
   {
     "qInfo": {
-      "qId": "772693e1-f0e7-4389-8193-dd8b0d6c232a",
+      "qId": "1b54b352-238b-4bbd-853c-f7237199a745",
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "vReloadAnalyzerUsersCounter",
+    "qName": "vOverageSVGPadPxByTenant",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "1"
+    "qDefinition": "=Len($(vMaxOverageUsedByTenant))*6",
+    "tags": []
   },
   {
     "qInfo": {
@@ -496,5 +408,79 @@
       "qUseThou": 0
     },
     "qDefinition": "3"
+  },
+  {
+    "qInfo": {
+      "qId": "239d652b-87df-45d3-be0f-5ab1b059f0d0",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vTableRecordCountThreshold",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "50000000"
+  },
+  {
+    "qInfo": {
+      "qId": "9d00151f-6847-4296-b3a9-3a3d0939fbda",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vFeaturesExpression",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "If($(vFeaturesValueList)='Alerts',Count({\u003cAlertsEnabled={'True'}\u003e} TenantID),\r\nIf($(vFeaturesValueList)='API Keys',Count({\u003cAPIKeysEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Chart Sharing via Email',Count({\u003cSharingEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Dynamic Views',Count({\u003cDynamicViewEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Groups',Count({\u003cGroupCreationEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Lineage',Count({\u003cLineageEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='ML Endpoints',Count({\u003cMLEndpointsEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Notes',Count({\u003cNotesEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='ODAG',Count({\u003cODAGEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Offline',Count({\u003cOfflineEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Report Subscription',Count({\u003cSharingReportSubscriptionEnabled={'True'}\u003e} TenantID),\nIf($(vFeaturesValueList)='Usage Metrics',Count({\u003cUsageMetricsEnabled={'True'}\u003e} TenantID)\n))))))))))))",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "be111875-72f1-415e-b936-b54f2a46b35c",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxAssignedProUsersGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=[# Professional Assigned (CM)]",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "49e68462-1a9c-4176-993e-388c6f8ddab4",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vMaxUsedCapacityGlobal",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=[# Capacity Used (CM Summed)]",
+    "tags": []
+  },
+  {
+    "qInfo": {
+      "qId": "0ca0f11f-2c87-42a4-95cc-d818a6047769",
+      "qType": "variable"
+    },
+    "qMetaDef": {},
+    "qName": "vProSVGPadPx",
+    "qNumberPresentation": {
+      "qType": "U",
+      "qnDec": 10,
+      "qUseThou": 0
+    },
+    "qDefinition": "=Len($(vMaxAssignedProUsers))*6 ",
+    "tags": []
   }
 ]

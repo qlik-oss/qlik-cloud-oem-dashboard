@@ -71,6 +71,70 @@
           "qCond": {},
           "qMsg": {}
         }
+      },
+      {
+        "qLibraryId": "NAKxSjZ",
+        "qDef": {
+          "qGrouping": "N",
+          "qFieldDefs": [],
+          "qFieldLabels": [
+            "Preferred Hostname"
+          ],
+          "qSortCriterias": [
+            {
+              "qSortByNumeric": 1,
+              "qSortByAscii": 1,
+              "qSortByLoadOrder": 1,
+              "qExpression": {}
+            }
+          ],
+          "qNumberPresentations": [],
+          "qActiveField": 0,
+          "autoSort": true,
+          "cId": "BjTFZzz",
+          "othersLabel": "Others",
+          "textAlign": {
+            "auto": true,
+            "align": "left"
+          },
+          "representation": {
+            "type": "text",
+            "urlPosition": "dimension",
+            "urlLabel": "",
+            "linkUrl": "",
+            "imageSetting": "label",
+            "imageLabel": "",
+            "imageUrl": "",
+            "imageSize": "fitHeight",
+            "imagePosition": "topCenter"
+          }
+        },
+        "qOtherTotalSpec": {
+          "qOtherMode": "OTHER_OFF",
+          "qOtherCounted": {
+            "qv": "10"
+          },
+          "qOtherLimit": {
+            "qv": "0"
+          },
+          "qOtherLimitMode": "OTHER_GE_LIMIT",
+          "qForceBadValueKeeping": true,
+          "qApplyEvenWhenPossiblyWrongResult": true,
+          "qOtherSortMode": "OTHER_SORT_DESCENDING",
+          "qTotalMode": "TOTAL_OFF",
+          "qReferencedExpression": {}
+        },
+        "qOtherLabel": {
+          "qv": "Others"
+        },
+        "qTotalLabel": {},
+        "qCalcCond": {},
+        "qAttributeExpressions": [],
+        "qAttributeDimensions": [],
+        "qCalcCondition": {
+          "qCond": {},
+          "qMsg": {}
+        }
       }
     ],
     "qMeasures": [
@@ -580,9 +644,10 @@
     ],
     "qInterColumnSortOrder": [
       0,
-      2,
       3,
       4,
+      5,
+      2,
       1
     ],
     "qSuppressMissing": true,
@@ -603,7 +668,8 @@
       1,
       2,
       3,
-      4
+      4,
+      5
     ],
     "qExpansionState": [],
     "qDynamicScript": [],
@@ -612,9 +678,11 @@
       1,
       2,
       3,
-      4
+      4,
+      5
     ],
     "columnWidths": [
+      -1,
       -1,
       128,
       115,
