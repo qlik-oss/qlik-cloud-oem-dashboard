@@ -3,7 +3,7 @@ TRACE Configuration;
 
 /////////////////////////////////////////// REQUIRED ///////////////////////////////////////////
 // IMPORTANT: To run this application, the user must be a "Tenant Admin" and must have an 
-// API Key, which requires the "Developer Role" and APIs to be enabled within the tenant.
+// API Key.
 
 /*
 The name of the REST connection that will be used. You must first create a valid REST connection to any endpoint to Qlik Sense tenant.
@@ -153,7 +153,7 @@ SUB get_odag
         "odagEnabled"
     FROM JSON (wrap on) "root"
     WITH CONNECTION (  
-      URL "https://$(vu_tenant_fqdn)/api/v1/odagsettings"
+      URL "https://$(vu_tenant_fqdn)/api/analytics/odag-settings"
     );
 
     [ODAGTemp]:
@@ -249,28 +249,16 @@ END SUB
 ///$tab Notes
 SUB get_notes
 
-    LIB CONNECT TO '$(vu_rest_connection)';
-
-    RestConnectorMasterTable:
-    SQL SELECT 
-        "available",
-        "lastFetch",
-        "reason"
-    FROM JSON (wrap on) "root"
-    WITH CONNECTION (  
-      URL "https://$(vu_tenant_fqdn)/api/v1/notes/settings"
-    );
+	// Access to notes is now controlled by permissions. Keeping this to preserve model integrity.
 
     [Notes]:
     LEFT JOIN(Tenants)
     LOAD	
         '$(vTenantID)' AS TenantID,
-        [available] AS NotesEnabled,
-        [lastFetch] AS NotesLastFetched,
-        [reason] AS NotesReason
-    RESIDENT RestConnectorMasterTable;
-
-    DROP TABLE RestConnectorMasterTable;
+        '<DEPRECATED>' AS NotesEnabled,
+        '<DEPRECATED>' AS NotesLastFetched,
+        '<DEPRECATED>' AS NotesReason
+    AutoGenerate 1;
 
 END SUB
 
@@ -406,7 +394,7 @@ SUB get_api_keys
     LEFT JOIN(Tenants)
     LOAD	
         '$(vTenantID)' AS TenantID,
-        [api_keys_enabled] AS APIKeysEnabled,
+        '<DEPRECATED>' AS APIKeysEnabled,
         [max_api_key_expiry] AS APIKeyMaxExpiry,
         [max_keys_per_user] AS APIKeyMaxPerUser,
         [scim_externalClient_expiry] AS APIKeySCIMExternalClientExpiry
@@ -631,7 +619,7 @@ SET comp=;
 Let vTenants = 0;
 
 SET app_name		= 'Console Settings Collector';
-SET app_version		= '2.2.0';
+SET app_version		= '2.2.1';
 LET comp 			= ComputerName(); 
 LET engine_ver 		= PurgeChar(EngineVersion(),Chr(39)); 
 LET start_msg 		= 'Reloading $(app_name) $(app_version) from $(comp) running QIX Engine version $(engine_ver)';

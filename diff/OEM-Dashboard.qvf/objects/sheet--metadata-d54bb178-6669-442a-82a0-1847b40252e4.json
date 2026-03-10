@@ -70,14 +70,14 @@
         "name": "htMvsKU",
         "type": "table",
         "col": 0,
-        "row": 3,
+        "row": 2,
         "colspan": 36,
-        "rowspan": 5,
+        "rowspan": 6,
         "bounds": {
-          "y": 16.666666666666664,
+          "y": 11.11111111111111,
           "x": 0,
           "width": 100,
-          "height": 27.77777777777778
+          "height": 33.33333333333333
         }
       },
       {
@@ -106,20 +106,6 @@
           "x": 0,
           "width": 22.22222222222222,
           "height": 11.11111111111111
-        }
-      },
-      {
-        "name": "dbPbX",
-        "type": "qlik-multi-kpi",
-        "col": 0,
-        "row": 2,
-        "colspan": 36,
-        "rowspan": 1,
-        "bounds": {
-          "y": 11.11111111111111,
-          "x": 0,
-          "width": 100,
-          "height": 5.555555555555555
         }
       }
     ],
@@ -213,6 +199,68 @@
                 "qMsg": {}
               },
               "othersLabel": "Others"
+            },
+            {
+              "qLibraryId": "NAKxSjZ",
+              "qDef": {
+                "qGrouping": "N",
+                "qFieldDefs": [],
+                "qFieldLabels": [],
+                "qSortCriterias": [
+                  {
+                    "qSortByNumeric": 1,
+                    "qSortByAscii": 1,
+                    "qSortByLoadOrder": 1,
+                    "qExpression": {}
+                  }
+                ],
+                "qNumberPresentations": [],
+                "qActiveField": 0,
+                "autoSort": true,
+                "cId": "sjNTdH",
+                "othersLabel": "Others",
+                "textAlign": {
+                  "auto": true,
+                  "align": "left"
+                },
+                "representation": {
+                  "type": "text",
+                  "urlPosition": "dimension",
+                  "urlLabel": "",
+                  "linkUrl": "",
+                  "imageSetting": "label",
+                  "imageLabel": "",
+                  "imageUrl": "",
+                  "imageSize": "fitHeight",
+                  "imagePosition": "topCenter"
+                }
+              },
+              "qOtherTotalSpec": {
+                "qOtherMode": "OTHER_OFF",
+                "qOtherCounted": {
+                  "qv": "10"
+                },
+                "qOtherLimit": {
+                  "qv": "0"
+                },
+                "qOtherLimitMode": "OTHER_GE_LIMIT",
+                "qForceBadValueKeeping": true,
+                "qApplyEvenWhenPossiblyWrongResult": true,
+                "qOtherSortMode": "OTHER_SORT_DESCENDING",
+                "qTotalMode": "TOTAL_OFF",
+                "qReferencedExpression": {}
+              },
+              "qOtherLabel": {
+                "qv": "Others"
+              },
+              "qTotalLabel": {},
+              "qCalcCond": {},
+              "qAttributeExpressions": [],
+              "qAttributeDimensions": [],
+              "qCalcCondition": {
+                "qCond": {},
+                "qMsg": {}
+              }
             },
             {
               "qLibraryId": "JHrJLj",
@@ -492,9 +540,10 @@
           ],
           "qInterColumnSortOrder": [
             0,
-            1,
+            2,
+            4,
             3,
-            2
+            1
           ],
           "qSuppressMissing": true,
           "qInitialDataFetch": [
@@ -519,19 +568,22 @@
           "qColumnOrder": [
             0,
             1,
-            3,
-            2
+            2,
+            4,
+            3
           ],
           "qExpansionState": [],
           "qDynamicScript": [],
           "columnOrder": [
             0,
             1,
-            3,
-            2
+            2,
+            4,
+            3
           ],
           "columnWidths": [
             188,
+            -1,
             129,
             -1,
             -1
@@ -1907,263 +1959,6 @@
         "openUrlInNewTab": true,
         "visualization": "kpi",
         "version": "0.9.0"
-      },
-      "qChildren": []
-    },
-    {
-      "qProperty": {
-        "qInfo": {
-          "qId": "dbPbX",
-          "qType": "qlik-multi-kpi"
-        },
-        "qMetaDef": {},
-        "qHyperCubeDef": {
-          "qDimensions": [
-            {
-              "qDef": {
-                "qGrouping": "N",
-                "qFieldDefs": [
-                  "=1"
-                ],
-                "qFieldLabels": [
-                  ""
-                ],
-                "qSortCriterias": [
-                  {
-                    "qSortByLoadOrder": 1,
-                    "qExpression": {}
-                  }
-                ],
-                "qNumberPresentations": [],
-                "qActiveField": 0,
-                "autoSort": true,
-                "cId": "YEQAzxf",
-                "othersLabel": "Others"
-              },
-              "qNullSuppression": true,
-              "qOtherTotalSpec": {
-                "qOtherMode": "OTHER_OFF",
-                "qOtherCounted": {
-                  "qv": "10"
-                },
-                "qOtherLimit": {
-                  "qv": "0"
-                },
-                "qOtherLimitMode": "OTHER_GE_LIMIT",
-                "qForceBadValueKeeping": true,
-                "qApplyEvenWhenPossiblyWrongResult": true,
-                "qOtherSortMode": "OTHER_SORT_DESCENDING",
-                "qTotalMode": "TOTAL_OFF",
-                "qReferencedExpression": {}
-              },
-              "qOtherLabel": {
-                "qv": "Others"
-              },
-              "qTotalLabel": {},
-              "qCalcCond": {},
-              "qAttributeExpressions": [],
-              "qAttributeDimensions": [],
-              "qCalcCondition": {
-                "qCond": {},
-                "qMsg": {}
-              }
-            }
-          ],
-          "qMeasures": [
-            {
-              "qDef": {
-                "qTags": [],
-                "qGrouping": "N",
-                "qDef": "=1",
-                "qNumFormat": {
-                  "qType": "U",
-                  "qnDec": 10,
-                  "qUseThou": 0
-                },
-                "qAccumulate": 0,
-                "qActiveExpression": 0,
-                "qExpressions": [],
-                "autoSort": true,
-                "cId": "NzetLVR",
-                "numFormatFromTemplate": true,
-                "autoFormatTemplate": "0A",
-                "labelColor": {
-                  "index": 14,
-                  "color": "#000000"
-                },
-                "conditionalValueColor": false,
-                "valueColor": {
-                  "index": 6,
-                  "color": "#4477aa"
-                },
-                "useLink": false,
-                "kpiLink": "",
-                "hideLabel": true,
-                "hideValue": true,
-                "groupByDimension": false,
-                "groupByDimensionValue": "",
-                "ovParams": false,
-                "size": " ",
-                "labelOrientation": "",
-                "labelOrder": "first",
-                "fontStyles": "",
-                "textAlignment": "center",
-                "valueIcon": "",
-                "iconPosition": "label",
-                "iconOrder": "first",
-                "iconSize": "",
-                "infographic": false,
-                "embeddedItem": ""
-              },
-              "qSortBy": {
-                "qSortByNumeric": -1,
-                "qSortByLoadOrder": 1,
-                "qExpression": {}
-              },
-              "qAttributeExpressions": [
-                {
-                  "qAttribute": true
-                }
-              ],
-              "qAttributeDimensions": [],
-              "qCalcCond": {},
-              "qCalcCondition": {
-                "qCond": {},
-                "qMsg": {}
-              },
-              "qTrendLines": [],
-              "qMiniChartDef": {
-                "qSortBy": {
-                  "qExpression": {}
-                },
-                "qOtherTotalSpec": {
-                  "qOtherMode": "OTHER_OFF",
-                  "qOtherCounted": {},
-                  "qOtherLimit": {},
-                  "qOtherLimitMode": "OTHER_GT_LIMIT",
-                  "qForceBadValueKeeping": true,
-                  "qApplyEvenWhenPossiblyWrongResult": true,
-                  "qOtherSortMode": "OTHER_SORT_DESCENDING",
-                  "qTotalMode": "TOTAL_OFF",
-                  "qReferencedExpression": {}
-                },
-                "qMaxNumberPoints": -1,
-                "qAttributeExpressions": []
-              },
-              "sheetLink": ""
-            }
-          ],
-          "qInterColumnSortOrder": [
-            0,
-            1
-          ],
-          "qInitialDataFetch": [
-            {
-              "qLeft": 0,
-              "qTop": 0,
-              "qWidth": 16,
-              "qHeight": 80
-            }
-          ],
-          "qReductionMode": "N",
-          "qMode": "S",
-          "qPseudoDimPos": -1,
-          "qNoOfLeftDims": -1,
-          "qMaxStackedCells": 5000,
-          "qCalcCond": {},
-          "qTitle": {},
-          "qCalcCondition": {
-            "qCond": {},
-            "qMsg": {}
-          },
-          "qColumnOrder": [],
-          "qExpansionState": [],
-          "qDynamicScript": [],
-          "qLayoutExclude": {
-            "qHyperCubeDef": {
-              "qDimensions": [],
-              "qMeasures": [],
-              "qInterColumnSortOrder": [],
-              "qInitialDataFetch": [],
-              "qReductionMode": "N",
-              "qMode": "S",
-              "qPseudoDimPos": -1,
-              "qNoOfLeftDims": -1,
-              "qMaxStackedCells": 5000,
-              "qCalcCond": {},
-              "qTitle": {},
-              "qCalcCondition": {
-                "qCond": {},
-                "qMsg": {}
-              },
-              "qColumnOrder": [],
-              "qExpansionState": [],
-              "qDynamicScript": []
-            }
-          }
-        },
-        "script": "",
-        "showTitles": false,
-        "title": "",
-        "subtitle": "",
-        "footnote": "",
-        "disableNavMenu": true,
-        "showDetails": false,
-        "showDetailsExpression": false,
-        "options": {
-          "dimShowAs": "segment",
-          "dimDivideBy": "auto",
-          "dimensionsOrientation": "horizontal",
-          "dimLabelOrientation": "top attached",
-          "dimLabelSize": "",
-          "dimHideLabels": true,
-          "dimCenteredLabels": true,
-          "dimHideBorders": true,
-          "dimHideInternalBorders": true,
-          "labelOrientation": "",
-          "labelOrder": "first",
-          "size": "normal",
-          "divideBy": "one",
-          "backgroundColor": {
-            "index": 13,
-            "color": "#b0afae"
-          },
-          "verticalAlign": "stretched-items",
-          "styles": "/* sheet background color */\n\n.qvt-sheet {\n    background-color: #F0F3F6 !important;\n}\n\n/* null value handling (make white and hide '-') */\n\n.cell .null-value .value {\n    color: #ffffff !important;\n    background: #ffffff !important;\n}\n\n.qv-pt .cell.null-value {\n    background-color: #ffffff;\n}\n\n.qv-pt .cell.empty.left:not(.top-meta).null-value,\n.qv-pt .cell.parent.left.null-value {\n    border-right-color: #ffffff;\n}\n\n.qv-pt .cell.empty.left:not(.top-meta).null-value,\n.qv-pt .cell.parent.left.null-value {\n    border-right-color: #ffffff;\n}\n\n.qv-pt .last-top-row {\n    border-top: 1px solid #e6e6e6\n}\n\n.qv-st-data-cell-null-value {\n    background-color: #ffffff !important;\n    left: -99999px !important;\n    position: relative !important;\n}\n\n/* custom container design */\n\n.qs-container .lui-tab.lui {\n    background-color: #D3D3D3 !important;\n}\n\n.qs-container .qsc-tab-row .lui-tab {\n    background-color: #F0F3F6;\n}\n\n.qs-container .lui-tab.lui-active,\n.qs-container .lui-tab.lui-focused,\n.qs-container .lui-tab:focus {\n    background-color: #006580 !important;\n    border-bottom: none !important;\n    box-shadow: 5px 0 5px -2px #888;\n    z-index: 1;\n}\n\n.qs-container .qsc-tab-row .lui-tabset {\n    background-color: #ffffff !important;\n}\n\n.qs-container .lui-tab.lui-active span,\n.qs-container .lui-tab.lui-focused span,\n.qs-container .lui-tab:focus span {\n    color: white !important;\n}\n\n.qs-container .qsc-tab-row .lui-tab:not(:first-child) {\n    border-left: 3px solid #E6E6E6 !important;\n    border-radius: 10px 0px 0px 0px;\n}\n\n.qs-container .qsc-tab-row button.lui-button.dropdown {\n    margin-left: 2px;\n}\n\n.qs-container .qsc-tab-row.hide-border,\n.qv-client.qv-card .qs-container .qsc-tab-row {\n    border-bottom: 2px solid #E6E6E6 !important;\n}\n\n.qs-container .qsc-tab-row button.lui-button.dropdown {\n    margin-right: 5px !important;\n}\n\n/* hide multi-kpi since only used for CSS */\n\n.qv-object-qlik-multi-kpi {\n    display: none;\n}\n\n/* add box shadow to objects except for those within containers or filterpane panels */\n\n.qv-object:not(:has(.qv-filterpane-collapsed)),\n.qv-filterpane-collapsed {\n    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;\n}\n\n.qv-object .qv-object {\n    box-shadow: none !important;\n}"
-        },
-        "visualization": "qlik-multi-kpi",
-        "version": 1.4,
-        "extensionMeta": {
-          "translationKey": "",
-          "icon": "kpi",
-          "iconChar": "puzzle",
-          "isLibraryItem": true,
-          "visible": true,
-          "name": "Multi KPI",
-          "description": "A tiled chart that shows one KPI per dimension value and measure.\nVersion: 0.109.0",
-          "template": "qlik-multi-kpi",
-          "iconPath": "M14.5,9 L13,9 L13,3.3 C13,3.1 12.9,3 12.7,3 L8,3 L8,1.5 C8,0.7 7.3,0 6.5,0 C5.7,0 5,0.7 5,1.5 L5,3 L0.3,3 C0.1,3 0,3.1 0,3.3 L0,9 L1.5,9 C2.3,9 3,9.7 3,10.5 C3,11.3 2.3,12 1.5,12 L0,12 L0,15.7 C0,15.9 0.1,16 0.3,16 L5,16 L5,14.5 C5,13.7 5.7,13 6.5,13 C7.3,13 8,13.7 8,14.5 L8,16 L12.7,16 C12.9,16 13,15.9 13,15.7 L13,12 L14.5,12 C15.3,12 16,11.3 16,10.5 C16,9.7 15.3,9 14.5,9 Z",
-          "isThirdParty": true,
-          "type": "visualization",
-          "version": "0.109.0",
-          "preview": "multikpi.png",
-          "keywords": "qlik-sense, visualization",
-          "author": "Alexander Nerush \u003cale.nerush@gmail.com\u003e",
-          "homepage": "https://github.com/alner/qsSimpleKPI",
-          "license": "MIT",
-          "repository": "https://github.com/alner/qsSimpleKPI",
-          "dependencies": {
-            "qlik-sense": "\u003e=5.5.x"
-          },
-          "bundle": {
-            "id": "qlik-visualization-bundle",
-            "name": "Qlik Visualization bundle",
-            "description": "This is a set of supported objects that expands the visualization capabilities of Qlik Sense. These can be used in addition to the objects found under 'Charts'. For support conditions and limitations, see the documentation."
-          },
-          "installer": "QlikExtensionBundler",
-          "folder": "_visualization-bundle",
-          "previewIconURL": "https://oem-parent-showcase.us.qlikcloud.com/resources/_visualization-bundle/qlik-multi-kpi/multikpi.png"
-        }
       },
       "qChildren": []
     }

@@ -181,7 +181,7 @@ LOAD
 FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Entitlement Analyzer/TenantMetadata.qvd]
 (qvd);
 
-SourceAppLastReloadTIme:
+SourceAppLastReloadTime:
 LOAD
     TenantID,
     'Entitlement Analyzer' AS SourceApp,
@@ -379,7 +379,7 @@ TRACE -------------;
 TRACE Loading App Analyzer data...;
 TRACE -------------;
 
-TenantMetadata:
+Concatenate(TenantMetadata)
 LOAD
 	*
 //     TenantID,
@@ -392,7 +392,7 @@ LOAD
 FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/App Analyzer/TenantMetadata.qvd]
 (qvd) WHERE NOT EXISTS(TenantID);
 
-SourceAppLastReloadTIme:
+SourceAppLastReloadTime:
 LOAD
     TenantID,
     'App Analyzer' AS SourceApp,
@@ -545,7 +545,7 @@ TRACE -------------;
 TRACE Loading Reload Analyzer data...;
 TRACE -------------;
 
-TenantMetadata:
+Concatenate(TenantMetadata)
 LOAD
 	*
 //     TenantID,
@@ -558,7 +558,7 @@ LOAD
 FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Monitoring/Reload Analyzer/TenantMetadata.qvd]
 (qvd) WHERE NOT EXISTS(TenantID);
 
-SourceAppLastReloadTIme:
+SourceAppLastReloadTime:
 LOAD
     TenantID,
     'Reload Analyzer' AS SourceApp,
@@ -708,7 +708,7 @@ IF $(vConsoleSettingsCollector)=1 THEN
     TRACE If you are experiencing issues with loading this data, you can toggle off the vConsoleSettingsCollector variable.;
     TRACE -------------;
 
-    SourceAppLastReloadTIme:
+    SourceAppLastReloadTime:
     LOAD
         TenantID,
         'Console Settings Collector' AS SourceApp,
@@ -796,28 +796,18 @@ IF $(vConsoleSettingsCollector)=1 THEN
     FROM [$(vu_qlik_meta_collection_parent_dir)/QlikMetaCollection/CompiledTenants/Settings/Console Settings Collector/Hostnames.qvd]
     (qvd);
 
-    // Add backwards compatible logic to remove Alias hostnames. Not a smart check, but a check none-the-less.
-    IF(NoOfFields('Temp_Hostnames') = 3) THEN
-    
-    	TRACE >> CSC is likely loading HostnameType, dropping Aliases until supported in OEM Dashboard.;
-        
-        Hostnames:
-        NoConcatenate
-        LOAD
-        	TenantHostname,
-            TenantID
-        RESIDENT Temp_Hostnames
-        WHERE HostnameType = 'Hostname';
-        
-        DROP TABLE Temp_Hostnames;
-        
-    ELSE
-    
-    	TRACE >> CSC is not providing HostnameType, no processing needed.;
-        
-        RENAME TABLE Temp_Hostnames TO Hostnames;
-        
-    END IF
+    TRACE >> CSC is likely loading HostnameType, keeping Hostname and Alias in separate fields.;
+
+    // Join table into tenant meta to reduce model duplication
+    LEFT JOIN (TenantMetadata)
+    LOAD
+        TenantID,
+        //MaxString(If(HostnameType = 'Hostname', TenantHostname)) AS TenantHostname,
+        MaxString(If(HostnameType = 'Alias', TenantHostname))    AS AliasHostnameTEMP
+    RESIDENT Temp_Hostnames
+    GROUP BY TenantID;
+
+    DROP TABLE Temp_Hostnames;
     
 	TRACE -------------;
     TRACE Finished loading Console Settings Collector data.;
@@ -920,23 +910,23 @@ IF $(vConsoleSettingsCollector)=1 THEN
     
 END IF
 
-LEFT JOIN(SourceAppLastReloadTIme)
+LEFT JOIN(SourceAppLastReloadTime)
 LOAD DISTINCT
 	If(Count(SourceApp)=If($(vConsoleSettingsCollector),4,3),Dual('True',1),Dual('False',0)) AS TenantHasAllChildAppsConfigured,
     TenantID
-RESIDENT SourceAppLastReloadTIme
+RESIDENT SourceAppLastReloadTime
 GROUP BY TenantID;
 
 Map_TenantIDSourceApp_Exists:
 MAPPING LOAD DISTINCT
 	TenantID & '|' & SourceApp AS _KeyTenantSourceAppExists,
     1
-RESIDENT SourceAppLastReloadTIme;
+RESIDENT SourceAppLastReloadTime;
 
 AllMonitoringAppsCartesian:
 LOAD DISTINCT
 	TenantID
-RESIDENT SourceAppLastReloadTIme;
+RESIDENT SourceAppLastReloadTime;
 
 JOIN(AllMonitoringAppsCartesian)
 LOAD DISTINCT
@@ -958,12 +948,13 @@ RENAME FIELD TenantName TO TenantNameTEMP;
 TenantMetadata:
 LOAD
 	*,
-    Dual(TenantNameTEMP,AutoNumber(TenantID)) AS TenantName
+    Coalesce(AliasHostnameTEMP,Hostname)		AS AliasHostname,
+    Dual(TenantNameTEMP,AutoNumber(TenantID)) 	AS TenantName
 RESIDENT TEMP
 ORDER BY TenantNameTEMP ASC;
 
 DROP TABLE TEMP;
-DROP FIELD TenantNameTEMP;
+DROP FIELDS TenantNameTEMP, AliasHostnameTEMP;
 
 DROP TABLE AllMonitoringApps;
 

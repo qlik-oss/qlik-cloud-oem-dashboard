@@ -883,6 +883,32 @@
   },
   {
     "qInfo": {
+      "qId": "NAKxSjZ",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "AliasHostname"
+      ],
+      "qFieldLabels": [
+        "Preferred Hostname"
+      ],
+      "qAlias": "Preferred Hostname",
+      "title": "Preferred Hostname",
+      "coloring": {
+        "changeHash": "0.41048764523460424",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Preferred Hostname",
+      "description": "The alias hostname if set, otherwise the hostname.",
+      "tags": []
+    }
+  },
+  {
+    "qInfo": {
       "qId": "NHBmdT",
       "qType": "dimension"
     },
