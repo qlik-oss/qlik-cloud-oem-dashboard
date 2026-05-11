@@ -3,7 +3,7 @@
   "qThumbnail": {
     "qUrl": "/api/v1/apps/<appId>/media/files/console_settings_collector_icon.png"
   },
-  "description": "The Console Settings Collector is a QVD generator that collects settings-related metadata cross Qlik Cloud tenants. It is predominantly used in support of multi-tenant monitoring applications.\n\nAvailable at https://github.com/qlik-oss/qlik-cloud-oem-dashboard.\n\n{v2.2.1}",
+  "description": "The Console Settings Collector is a QVD generator that collects settings-related metadata cross Qlik Cloud tenants. It is predominantly used in support of multi-tenant monitoring applications.\n\nAvailable at https://github.com/qlik-oss/qlik-cloud-oem-dashboard.\n\n{v2.3.0}",
   "qUsage": "ANALYTICS",
   "published": false,
   "hassectionaccess": false

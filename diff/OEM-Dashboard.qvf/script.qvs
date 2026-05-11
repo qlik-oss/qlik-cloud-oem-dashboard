@@ -5,6 +5,7 @@
 // The location below should point to the parent directory of the "QlikMetaCollection" folder.
 
 SET vu_qlik_meta_collection_parent_dir = 'lib://:';				// Parent directory of the "QlikMetaCollection" folder (trailing slash optional)
+
 ///$tab ** Optional Configuration **
 //=========
 // Whether or not to include the Console Settings Collector.
@@ -95,7 +96,7 @@ SET BrokenWeeks=1;
 SET ReferenceDay=0;
 SET FirstMonthOfYear=1;
 SET CollationLocale='en-US';
-SET CreateSearchIndexOnReload=1;
+SET CreateSearchIndexOnReload=0;
 SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
 SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
