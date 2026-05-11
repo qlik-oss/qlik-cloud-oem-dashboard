@@ -3,7 +3,7 @@
   "qThumbnail": {
     "qUrl": "/api/v1/apps/<appId>/media/files/oem-dashboard.png"
   },
-  "description": "Analyze metadata across multiple Qlik Cloud tenants.\n\nAvailable at https://github.com/qlik-oss/qlik-cloud-oem-dashboard.\n\n{v2.2.1}",
+  "description": "Analyze metadata across multiple Qlik Cloud tenants.\n\nAvailable at https://github.com/qlik-oss/qlik-cloud-oem-dashboard.\n\n{v2.3.0}",
   "qUsage": "ANALYTICS",
   "published": false,
   "hassectionaccess": false
